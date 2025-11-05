@@ -41,11 +41,15 @@ target_file_extension = ".m4a"
 window = tk.Tk()
 window.title("Dead Air Remove")
 
+window.mainloop()
+
 #Trying to run with the console inputs
-try:
-    for index, filename in enumerate(os.listdir(directory_path)):
-        f_name, f_extension = os.path.splitext(filename)
-        if f_extension == target_file_extension:
-            remove_dead_air(os.path.join(directory_path, filename), os.path.join(output, filename))
-except OSError as e:
-    print(f"OS Error")
+run = False
+if run:
+    try:
+        for index, filename in enumerate(os.listdir(directory_path)):
+            f_name, f_extension = os.path.splitext(filename)
+            if f_extension == target_file_extension:
+                remove_dead_air(os.path.join(directory_path, filename), os.path.join(output, filename))
+    except OSError as e:
+        print(f"OS Error")
