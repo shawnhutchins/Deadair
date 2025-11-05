@@ -33,16 +33,9 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
     except ffmpeg.Error as e:
         print(f"Error removing dead air: {e.stderr.decode()}")
 
-#Console input and output paths with trailing / (slash) and target file type with leading . (period)
-confirmed = False
-while not confirmed:
-
-    directory_path = input("Please enter an input directory path. (Example input/)\n>")
-    output = input("Please enter an output directory path. (Example output/)\n>")
-    target_file_extension = input("please enter one file type extension. (Example .mp3, or .m4a)\n>")
-    confirm_inputs = input(f"Does everything look correct? y/n\n>").lower()
-    if confirm_inputs == "y":
-        confirmed = True
+directory_path = "input/"
+output = "output/"
+target_file_extension = ".m4a"
 
 #Trying to run with the console inputs
 try:
