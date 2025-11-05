@@ -1,3 +1,4 @@
+import tkinter as tk
 import ffmpeg
 import os
 
@@ -36,6 +37,9 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
 directory_path = "input/"
 output = "output/"
 target_file_extension = ".m4a"
+
+window = tk.Tk()
+window.title("Dead Air Remove")
 
 #Trying to run with the console inputs
 try:
