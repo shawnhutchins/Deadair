@@ -35,6 +35,8 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
     except ffmpeg.Error as e:
         print(f"Error removing dead air: {e.stderr.decode()}")
 
+#split into separate functions for input and output that call select_folder
+#Opens the folder select dialog and sets the input_label to the path value
 def select_folder():
     folder_name = filedialog.askdirectory(
         parent=window,
@@ -42,10 +44,12 @@ def select_folder():
     )
     input_label.config(text=folder_name)
 
+#control variables
 directory_path = "input/"
 output = "output/"
 target_file_extension = ".m4a"
 
+#UI elements
 window = tk.Tk()
 window.title("Dead Air Remove")
 
@@ -54,7 +58,6 @@ input_select_button.pack()
 
 input_label = tk.Label(text="")
 input_label.pack()
-
 
 window.mainloop()
 
