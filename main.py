@@ -1,3 +1,4 @@
+from tkinter import filedialog
 import tkinter as tk
 import ffmpeg
 import os
@@ -34,12 +35,26 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
     except ffmpeg.Error as e:
         print(f"Error removing dead air: {e.stderr.decode()}")
 
+def select_folder():
+    folder_name = filedialog.askdirectory(
+        parent=window,
+        title="Browse Folder"
+    )
+    input_label.config(text=folder_name)
+
 directory_path = "input/"
 output = "output/"
 target_file_extension = ".m4a"
 
 window = tk.Tk()
 window.title("Dead Air Remove")
+
+input_select_button = tk.Button(text="Input", command=select_folder)
+input_select_button.pack()
+
+input_label = tk.Label(text="")
+input_label.pack()
+
 
 window.mainloop()
 
