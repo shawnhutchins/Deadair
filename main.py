@@ -42,7 +42,14 @@ def select_folder():
         parent=window,
         title="Browse Folder"
     )
-    input_label.config(text=folder_name)
+    return folder_name
+
+def select_input():
+    input_label.config(text=select_folder())
+
+def select_output():
+    output_label.config(text=select_folder())
+
 
 #control variables
 directory_path = "input/"
@@ -54,18 +61,18 @@ window = tk.Tk()
 window.title("Dead Air Remove")
 
 #Input
-input_select_button = tk.Button(text="Input", command=select_folder)
+input_select_button = tk.Button(text="Input", command=select_input)
 input_select_button.grid(row=0, column=0)
 
 input_label = tk.Label(text="")
 input_label.grid(row=0, column=1)
 
 #Output
-output_select_button = tk.Button(text="Output")
+output_select_button = tk.Button(text="Output", command=select_output)
 output_select_button.grid(row=1, column=0)
 
 output_label = tk.Label(text="")
-output_label.grid(row=1, column=2)
+output_label.grid(row=1, column=1)
 
 window.mainloop()
 
