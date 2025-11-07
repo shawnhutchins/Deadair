@@ -3,8 +3,6 @@ import tkinter as tk
 import ffmpeg
 import os
 
-#make into command line app and accept input of directory paths
-#make into tkinter app with folder selection
 
 def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_duration=0.5):
     """
@@ -35,7 +33,6 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
     except ffmpeg.Error as e:
         print(f"Error removing dead air: {e.stderr.decode()}")
 
-#split into separate functions for input and output that call select_folder
 #Opens the folder select dialog and sets the input_label to the path value
 def select_folder():
     folder_name = filedialog.askdirectory(
@@ -50,15 +47,18 @@ def select_input():
 def select_output():
     output_label.config(text=select_folder())
 
-
 #control variables
 directory_path = "input/"
 output = "output/"
 target_file_extension = ".m4a"
 
+#test using entry elements in place of the labels for sizing and manual editing
 #UI elements
+PADDING = 16
+
 window = tk.Tk()
 window.title("Dead Air Remove")
+window.config(padx=PADDING, pady=PADDING)
 
 #Input
 input_select_button = tk.Button(text="Input", command=select_input)
