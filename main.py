@@ -59,6 +59,12 @@ input_select_button.pack()
 input_label = tk.Label(text="")
 input_label.pack()
 
+output_select_button = tk.Button(text="Output")
+output_select_button.pack()
+
+output_label = tk.Label(text="")
+output_label.pack()
+
 window.mainloop()
 
 #Trying to run with the console inputs
