@@ -58,7 +58,11 @@ PADDING = 16
 
 window = tk.Tk()
 window.title("Dead Air Remove")
+window.geometry("400x200")
 window.config(padx=PADDING, pady=PADDING)
+
+input_var = tk.StringVar()
+output_var = tk.StringVar()
 
 #Input
 input_select_button = tk.Button(text="Input", command=select_input)
