@@ -47,6 +47,10 @@ def select_input():
 def select_output():
     output_var.set(select_folder())
 
+def run_script():
+    print("Input path: " + input_var.get())
+    print("Output path: " + output_var.get())
+
 #control variables
 directory_path = "input/"
 output = "output/"
@@ -68,17 +72,21 @@ output_var = tk.StringVar()
 
 #Input
 input_select_button = tk.Button(window, text="Input", command=select_input)
-input_entry = tk.Entry(window, textvariable= input_var, )
+input_entry = tk.Entry(window, textvariable= input_var)
 
 #Output
 output_select_button = tk.Button(window, text="Output", command=select_output)
-output_entry = tk.Entry(window)
+output_entry = tk.Entry(window, textvariable= output_var)
+
+#Run button
+run_button = tk.Button(window, text="Run", command=run_script)
 
 #Grid
 input_select_button.grid(row=0, column=0)
 input_entry.grid(row=0, column=1)
 output_select_button.grid(row=1, column=0)
 output_entry.grid(row=1, column=1)
+run_button.grid(row=2, column=0)
 
 window.mainloop()
 
