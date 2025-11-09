@@ -63,7 +63,7 @@ PADDING = 16
 #Main window
 window = tk.Tk()
 window.title("Dead Air Remove")
-window.geometry("400x200")
+window.geometry("400x110")
 window.config(padx=PADDING, pady=PADDING)
 
 #Entry variables
@@ -71,15 +71,15 @@ input_var = tk.StringVar()
 output_var = tk.StringVar()
 
 #Input
-input_select_button = tk.Button(window, text="Input", command=select_input)
-input_entry = tk.Entry(window, textvariable= input_var)
+input_select_button = tk.Button(window, text="Input", command=select_input, width=8)
+input_entry = tk.Entry(window, textvariable= input_var, width=50)
 
 #Output
-output_select_button = tk.Button(window, text="Output", command=select_output)
-output_entry = tk.Entry(window, textvariable= output_var)
+output_select_button = tk.Button(window, text="Output", command=select_output, width=8)
+output_entry = tk.Entry(window, textvariable= output_var, width=50)
 
 #Run button
-run_button = tk.Button(window, text="Run", command=run_script)
+run_button = tk.Button(window, text="Run", command=run_script, width= 8)
 
 #Grid
 input_select_button.grid(row=0, column=0)
