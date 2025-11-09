@@ -42,10 +42,10 @@ def select_folder():
     return folder_name
 
 def select_input():
-    input_label.config(text=select_folder())
+    input_var.set(select_folder())
 
 def select_output():
-    output_label.config(text=select_folder())
+    output_var.set(select_folder())
 
 #control variables
 directory_path = "input/"
@@ -56,27 +56,29 @@ target_file_extension = ".m4a"
 #UI elements
 PADDING = 16
 
+#Main window
 window = tk.Tk()
 window.title("Dead Air Remove")
 window.geometry("400x200")
 window.config(padx=PADDING, pady=PADDING)
 
+#Entry variables
 input_var = tk.StringVar()
 output_var = tk.StringVar()
 
 #Input
-input_select_button = tk.Button(text="Input", command=select_input)
-input_select_button.grid(row=0, column=0)
-
-input_label = tk.Label(text="")
-input_label.grid(row=0, column=1)
+input_select_button = tk.Button(window, text="Input", command=select_input)
+input_entry = tk.Entry(window, textvariable= input_var, )
 
 #Output
-output_select_button = tk.Button(text="Output", command=select_output)
-output_select_button.grid(row=1, column=0)
+output_select_button = tk.Button(window, text="Output", command=select_output)
+output_entry = tk.Entry(window)
 
-output_label = tk.Label(text="")
-output_label.grid(row=1, column=1)
+#Grid
+input_select_button.grid(row=0, column=0)
+input_entry.grid(row=0, column=1)
+output_select_button.grid(row=1, column=0)
+output_entry.grid(row=1, column=1)
 
 window.mainloop()
 
