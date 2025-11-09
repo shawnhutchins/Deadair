@@ -41,11 +41,22 @@ def select_folder():
     )
     return folder_name
 
+def select_file():
+    file_name = filedialog.askopenfilename(
+        parent=window,
+        title="Browse File"
+    )
+    return file_name
+
 def select_input():
     input_var.set(select_folder())
 
 def select_output():
     output_var.set(select_folder())
+
+def select_file_type():
+    selected_file = select_file()
+    print(selected_file)
 
 def run_script():
     print("Input path: " + input_var.get())
@@ -56,27 +67,31 @@ directory_path = "input/"
 output = "output/"
 target_file_extension = ".m4a"
 
-#test using entry elements in place of the labels for sizing and manual editing
 #UI elements
 PADDING = 16
 
 #Main window
 window = tk.Tk()
 window.title("Dead Air Remove")
-window.geometry("400x110")
+window.geometry("400x136")
 window.config(padx=PADDING, pady=PADDING)
 
 #Entry variables
 input_var = tk.StringVar()
 output_var = tk.StringVar()
+file_type_var = tk.StringVar()
 
+#add tooltips and or explanation labels
 #Input
 input_select_button = tk.Button(window, text="Input", command=select_input, width=8)
-input_entry = tk.Entry(window, textvariable= input_var, width=50)
+input_entry = tk.Entry(window, textvariable=input_var, width=50)
 
 #Output
 output_select_button = tk.Button(window, text="Output", command=select_output, width=8)
-output_entry = tk.Entry(window, textvariable= output_var, width=50)
+output_entry = tk.Entry(window, textvariable=output_var, width=50)
+
+file_type_button = tk.Button(window, text="Filetype", command=select_file_type, width=8)
+file_type_entry = tk.Entry(window, textvariable=file_type_var, width=50)
 
 #Run button
 run_button = tk.Button(window, text="Run", command=run_script, width= 8)
@@ -86,7 +101,9 @@ input_select_button.grid(row=0, column=0)
 input_entry.grid(row=0, column=1)
 output_select_button.grid(row=1, column=0)
 output_entry.grid(row=1, column=1)
-run_button.grid(row=2, column=0)
+file_type_button.grid(row=2, column=0)
+file_type_entry.grid(row=2, column=1)
+run_button.grid(row=3, column=0)
 
 window.mainloop()
 
