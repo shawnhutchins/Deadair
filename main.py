@@ -44,7 +44,7 @@ def select_folder():
 def select_file():
     file_name = filedialog.askopenfilename(
         parent=window,
-        title="Browse File"
+        title="Select one of the files to be processed"
     )
     return file_name
 
@@ -56,14 +56,14 @@ def select_output():
 
 def select_file_type():
     selected_file = select_file()
-    file_path_name, file_extension = os.path.splitext(selected_file)
+    _, file_extension = os.path.splitext(selected_file)
     file_type_var.set(file_extension)
 
 def run_script():
     try:
         for index, filename in enumerate(os.listdir(input_var.get())):
-            f_name, f_extension = os.path.splitext(filename)
-            if f_extension == file_type_var.get():
+            _, file_extension = os.path.splitext(filename)
+            if file_extension == file_type_var.get():
                 remove_dead_air(os.path.join(input_var.get(), filename), os.path.join(output_var.get(), filename))
     except OSError as e:
         print(f"OS Error")
