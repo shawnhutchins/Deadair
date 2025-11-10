@@ -60,13 +60,13 @@ def select_file_type():
     file_type_var.set(file_extension)
 
 def run_script():
-    print("Input path: " + input_var.get())
-    print("Output path: " + output_var.get())
-
-#control variables
-directory_path = "input/"
-output = "output/"
-target_file_extension = ".m4a"
+    try:
+        for index, filename in enumerate(os.listdir(input_var.get())):
+            f_name, f_extension = os.path.splitext(filename)
+            if f_extension == file_type_var.get():
+                remove_dead_air(os.path.join(input_var.get(), filename), os.path.join(output_var.get(), filename))
+    except OSError as e:
+        print(f"OS Error")
 
 #UI elements
 PADDING = 16
@@ -83,14 +83,15 @@ output_var = tk.StringVar()
 file_type_var = tk.StringVar()
 
 #add tooltips and or explanation labels
-#Input
+#Input, select the directory that contains the files you wish to process
 input_select_button = tk.Button(window, text="Input", command=select_input, width=8)
 input_entry = tk.Entry(window, textvariable=input_var, width=50)
 
-#Output
+#Output, select a directory for your processed files to be placed in
 output_select_button = tk.Button(window, text="Output", command=select_output, width=8)
 output_entry = tk.Entry(window, textvariable=output_var, width=50)
 
+#Filetype, select a file to use its file extension
 file_type_button = tk.Button(window, text="Filetype", command=select_file_type, width=8)
 file_type_entry = tk.Entry(window, textvariable=file_type_var, width=50)
 
@@ -107,14 +108,3 @@ file_type_entry.grid(row=2, column=1)
 run_button.grid(row=3, column=0)
 
 window.mainloop()
-
-#Trying to run with the console inputs
-run = False
-if run:
-    try:
-        for index, filename in enumerate(os.listdir(directory_path)):
-            f_name, f_extension = os.path.splitext(filename)
-            if f_extension == target_file_extension:
-                remove_dead_air(os.path.join(directory_path, filename), os.path.join(output, filename))
-    except OSError as e:
-        print(f"OS Error")
