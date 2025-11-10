@@ -56,7 +56,8 @@ def select_output():
 
 def select_file_type():
     selected_file = select_file()
-    print(selected_file)
+    file_path_name, file_extension = os.path.splitext(selected_file)
+    file_type_var.set(file_extension)
 
 def run_script():
     print("Input path: " + input_var.get())
