@@ -73,13 +73,14 @@ def run_script():
         print(f"OS Error")
 
 #UI elements
-PADDING = 16
+PADDING = 12
+WIDGET_PAD = 2
 BTN_WIDTH = 60
 
 #Main window
 window = ctk.CTk()
 window.title("Dead Air Remove")
-window.geometry("500x146")
+window.geometry("490x154")
 window.config(padx=PADDING, pady=PADDING)
 
 #Entry variables
@@ -89,11 +90,11 @@ file_type_var = ctk.StringVar()
 
 #Input, select the directory that contains the files you wish to process
 input_select_button = ctk.CTkButton(window, text="Input", command=select_input, width=BTN_WIDTH)
-input_entry = ctk.CTkEntry(window, textvariable=input_var, width=360, state="readonly")
+input_entry = ctk.CTkEntry(window, textvariable=input_var, width=400, state="readonly")
 
 #Output, select a directory for your processed files to be placed in
 output_select_button = ctk.CTkButton(window, text="Output", command=select_output, width=BTN_WIDTH)
-output_entry = ctk.CTkEntry(window, textvariable=output_var, width=360, state="readonly")
+output_entry = ctk.CTkEntry(window, textvariable=output_var, width=400, state="readonly")
 
 #Filetype, select a file to use its file extension
 file_type_button = ctk.CTkButton(window, text="Filetype", command=select_file_type, width=BTN_WIDTH)
@@ -103,12 +104,12 @@ file_type_entry = ctk.CTkEntry(window, textvariable=file_type_var, width=60, sta
 run_button = ctk.CTkButton(window, text="Run", command=run_script, width= BTN_WIDTH)
 
 #Grid
-input_select_button.grid(row=0, column=0)
-input_entry.grid(row=0, column=1)
-output_select_button.grid(row=1, column=0)
-output_entry.grid(row=1, column=1)
-file_type_button.grid(row=2, column=0)
-file_type_entry.grid(row=2, column=1, sticky="W")
-run_button.grid(row=3, column=0)
+input_select_button.grid(row=0, column=0, padx=WIDGET_PAD, pady=WIDGET_PAD)
+input_entry.grid(row=0, column=1, padx=WIDGET_PAD, pady=WIDGET_PAD)
+output_select_button.grid(row=1, column=0, padx=WIDGET_PAD, pady=WIDGET_PAD)
+output_entry.grid(row=1, column=1, padx=WIDGET_PAD, pady=WIDGET_PAD)
+file_type_button.grid(row=2, column=0, padx=WIDGET_PAD, pady=WIDGET_PAD)
+file_type_entry.grid(row=2, column=1, sticky="W", padx=WIDGET_PAD, pady=WIDGET_PAD)
+run_button.grid(row=3, column=0, padx=WIDGET_PAD, pady=WIDGET_PAD)
 
 window.mainloop()
