@@ -3,6 +3,9 @@ import tkinter as tk
 import ffmpeg
 import os
 
+#convert to customtkinter
+#add tool tips
+
 
 def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_duration=0.5):
     """
@@ -85,15 +88,15 @@ file_type_var = tk.StringVar()
 #add tooltips and or explanation labels
 #Input, select the directory that contains the files you wish to process
 input_select_button = tk.Button(window, text="Input", command=select_input, width=8)
-input_entry = tk.Entry(window, textvariable=input_var, width=50)
+input_entry = tk.Entry(window, textvariable=input_var, width=50, state="readonly")
 
 #Output, select a directory for your processed files to be placed in
 output_select_button = tk.Button(window, text="Output", command=select_output, width=8)
-output_entry = tk.Entry(window, textvariable=output_var, width=50)
+output_entry = tk.Entry(window, textvariable=output_var, width=50, state="readonly")
 
 #Filetype, select a file to use its file extension
 file_type_button = tk.Button(window, text="Filetype", command=select_file_type, width=8)
-file_type_entry = tk.Entry(window, textvariable=file_type_var, width=50)
+file_type_entry = tk.Entry(window, textvariable=file_type_var, width=50, state="readonly", )
 
 #Run button
 run_button = tk.Button(window, text="Run", command=run_script, width= 8)
