@@ -1,10 +1,12 @@
 from tkinter import filedialog
-import tkinter as tk
+import customtkinter as ctk
 import ffmpeg
 import os
 
 #convert to customtkinter
 #add tool tips
+#add indication of success or failure
+#add indication of progress
 
 def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_duration=0.5):
     """
@@ -72,32 +74,33 @@ def run_script():
 
 #UI elements
 PADDING = 16
+BTN_WIDTH = 60
 
 #Main window
-window = tk.Tk()
+window = ctk.CTk()
 window.title("Dead Air Remove")
-window.geometry("400x136")
+window.geometry("500x146")
 window.config(padx=PADDING, pady=PADDING)
 
 #Entry variables
-input_var = tk.StringVar()
-output_var = tk.StringVar()
-file_type_var = tk.StringVar()
+input_var = ctk.StringVar()
+output_var = ctk.StringVar()
+file_type_var = ctk.StringVar()
 
 #Input, select the directory that contains the files you wish to process
-input_select_button = tk.Button(window, text="Input", command=select_input, width=8)
-input_entry = tk.Entry(window, textvariable=input_var, width=50, state="readonly")
+input_select_button = ctk.CTkButton(window, text="Input", command=select_input, width=BTN_WIDTH)
+input_entry = ctk.CTkEntry(window, textvariable=input_var, width=360, state="readonly")
 
 #Output, select a directory for your processed files to be placed in
-output_select_button = tk.Button(window, text="Output", command=select_output, width=8)
-output_entry = tk.Entry(window, textvariable=output_var, width=50, state="readonly")
+output_select_button = ctk.CTkButton(window, text="Output", command=select_output, width=BTN_WIDTH)
+output_entry = ctk.CTkEntry(window, textvariable=output_var, width=360, state="readonly")
 
 #Filetype, select a file to use its file extension
-file_type_button = tk.Button(window, text="Filetype", command=select_file_type, width=8)
-file_type_entry = tk.Entry(window, textvariable=file_type_var, width=10, state="readonly", )
+file_type_button = ctk.CTkButton(window, text="Filetype", command=select_file_type, width=BTN_WIDTH)
+file_type_entry = ctk.CTkEntry(window, textvariable=file_type_var, width=60, state="readonly", )
 
 #Run button
-run_button = tk.Button(window, text="Run", command=run_script, width= 8)
+run_button = ctk.CTkButton(window, text="Run", command=run_script, width= BTN_WIDTH)
 
 #Grid
 input_select_button.grid(row=0, column=0)
