@@ -4,6 +4,7 @@ import ffmpeg
 import os
 
 #convert to customtkinter
+#add header Label
 #add tool tips
 #add indication of success or failure
 #add indication of progress
