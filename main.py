@@ -6,7 +6,6 @@ import os
 
 #convert to customtkinter
 #add header Label
-#add tool tips
 #add indication of success or failure
 #add indication of progress
 
@@ -50,7 +49,7 @@ def select_folder():
 def select_file():
     file_name = filedialog.askopenfilename(
         parent=window,
-        title="Select one of the files to be processed"
+        title="Browse File"
     )
     return file_name
 
@@ -92,14 +91,17 @@ file_type_var = ctk.StringVar()
 
 #Input, select the directory that contains the files you wish to process
 input_select_button = ctk.CTkButton(window, text="Input", command=select_input, width=BTN_WIDTH)
+ToolTip(input_select_button, msg="Select a directory containing files to process")
 input_entry = ctk.CTkEntry(window, textvariable=input_var, width=400, state="readonly")
 
 #Output, select a directory for your processed files to be placed in
 output_select_button = ctk.CTkButton(window, text="Output", command=select_output, width=BTN_WIDTH)
+ToolTip(output_select_button, msg="Select a directory to export the processed files into")
 output_entry = ctk.CTkEntry(window, textvariable=output_var, width=400, state="readonly")
 
 #Filetype, select a file to use its file extension
 file_type_button = ctk.CTkButton(window, text="Filetype", command=select_file_type, width=BTN_WIDTH)
+ToolTip(file_type_button, msg="Select a file of the type you wish to process")
 file_type_entry = ctk.CTkEntry(window, textvariable=file_type_var, width=60, state="readonly", )
 
 #Run button
