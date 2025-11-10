@@ -1,4 +1,5 @@
 from tkinter import filedialog
+from tktooltip import ToolTip
 import customtkinter as ctk
 import ffmpeg
 import os
@@ -81,7 +82,7 @@ BTN_WIDTH = 60
 #Main window
 window = ctk.CTk()
 window.title("Dead Air Remove")
-window.geometry("490x154")
+window.minsize(490, 154)
 window.config(padx=PADDING, pady=PADDING)
 
 #Entry variables
