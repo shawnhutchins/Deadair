@@ -4,8 +4,9 @@ import customtkinter as ctk
 import ffmpeg
 import os
 
-#convert to customtkinter
 #add header Label
+#don't run the script if any of the entries are empty
+#check for mixed forward and backslashes in path
 #add indication of success or failure
 #add indication of progress
 
@@ -73,16 +74,16 @@ def run_script():
     except OSError as e:
         print(f"OS Error")
 
-#UI elements
-PADDING = 12
-WIDGET_PAD = 2
-BTN_WIDTH = 60
+#UI constants
+WINDOW_PADDING = 12
+WIDGET_PADDING = 2
+BUTTON_WIDTH = 60
 
 #Main window
 window = ctk.CTk()
 window.title("Dead Air Remove")
 window.minsize(490, 154)
-window.config(padx=PADDING, pady=PADDING)
+window.config(padx=WINDOW_PADDING, pady=WINDOW_PADDING)
 
 #Entry variables
 input_var = ctk.StringVar()
@@ -90,30 +91,30 @@ output_var = ctk.StringVar()
 file_type_var = ctk.StringVar()
 
 #Input, select the directory that contains the files you wish to process
-input_select_button = ctk.CTkButton(window, text="Input", command=select_input, width=BTN_WIDTH)
+input_select_button = ctk.CTkButton(window, text="Input", command=select_input, width=BUTTON_WIDTH)
 ToolTip(input_select_button, msg="Select a directory containing files to process")
 input_entry = ctk.CTkEntry(window, textvariable=input_var, width=400, state="readonly")
 
 #Output, select a directory for your processed files to be placed in
-output_select_button = ctk.CTkButton(window, text="Output", command=select_output, width=BTN_WIDTH)
+output_select_button = ctk.CTkButton(window, text="Output", command=select_output, width=BUTTON_WIDTH)
 ToolTip(output_select_button, msg="Select a directory to export the processed files into")
 output_entry = ctk.CTkEntry(window, textvariable=output_var, width=400, state="readonly")
 
 #Filetype, select a file to use its file extension
-file_type_button = ctk.CTkButton(window, text="Filetype", command=select_file_type, width=BTN_WIDTH)
+file_type_button = ctk.CTkButton(window, text="Filetype", command=select_file_type, width=BUTTON_WIDTH)
 ToolTip(file_type_button, msg="Select a file of the type you wish to process")
 file_type_entry = ctk.CTkEntry(window, textvariable=file_type_var, width=60, state="readonly", )
 
 #Run button
-run_button = ctk.CTkButton(window, text="Run", command=run_script, width= BTN_WIDTH)
+run_button = ctk.CTkButton(window, text="Run", command=run_script, width= BUTTON_WIDTH)
 
 #Grid
-input_select_button.grid(row=0, column=0, padx=WIDGET_PAD, pady=WIDGET_PAD)
-input_entry.grid(row=0, column=1, padx=WIDGET_PAD, pady=WIDGET_PAD)
-output_select_button.grid(row=1, column=0, padx=WIDGET_PAD, pady=WIDGET_PAD)
-output_entry.grid(row=1, column=1, padx=WIDGET_PAD, pady=WIDGET_PAD)
-file_type_button.grid(row=2, column=0, padx=WIDGET_PAD, pady=WIDGET_PAD)
-file_type_entry.grid(row=2, column=1, sticky="W", padx=WIDGET_PAD, pady=WIDGET_PAD)
-run_button.grid(row=3, column=0, padx=WIDGET_PAD, pady=WIDGET_PAD)
+input_select_button.grid(row=0, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+input_entry.grid(row=0, column=1, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+output_select_button.grid(row=1, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+output_entry.grid(row=1, column=1, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+file_type_button.grid(row=2, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+file_type_entry.grid(row=2, column=1, sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+run_button.grid(row=3, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 
 window.mainloop()
