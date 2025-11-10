@@ -6,7 +6,6 @@ import os
 #convert to customtkinter
 #add tool tips
 
-
 def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_duration=0.5):
     """
     Removes dead air from a file using ffmpeg-python.
@@ -85,7 +84,6 @@ input_var = tk.StringVar()
 output_var = tk.StringVar()
 file_type_var = tk.StringVar()
 
-#add tooltips and or explanation labels
 #Input, select the directory that contains the files you wish to process
 input_select_button = tk.Button(window, text="Input", command=select_input, width=8)
 input_entry = tk.Entry(window, textvariable=input_var, width=50, state="readonly")
@@ -96,7 +94,7 @@ output_entry = tk.Entry(window, textvariable=output_var, width=50, state="readon
 
 #Filetype, select a file to use its file extension
 file_type_button = tk.Button(window, text="Filetype", command=select_file_type, width=8)
-file_type_entry = tk.Entry(window, textvariable=file_type_var, width=50, state="readonly", )
+file_type_entry = tk.Entry(window, textvariable=file_type_var, width=10, state="readonly", )
 
 #Run button
 run_button = tk.Button(window, text="Run", command=run_script, width= 8)
@@ -107,7 +105,7 @@ input_entry.grid(row=0, column=1)
 output_select_button.grid(row=1, column=0)
 output_entry.grid(row=1, column=1)
 file_type_button.grid(row=2, column=0)
-file_type_entry.grid(row=2, column=1)
+file_type_entry.grid(row=2, column=1, sticky="W")
 run_button.grid(row=3, column=0)
 
 window.mainloop()
