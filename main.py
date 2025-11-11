@@ -90,25 +90,35 @@ input_var = ctk.StringVar()
 output_var = ctk.StringVar()
 file_type_var = ctk.StringVar()
 
+#Header
+header_title = ctk.CTkLabel(window, font=("Arial", 32, "bold"), text="DEAD AIR\nREMOVE")
+
+#main content
+content_frame = ctk.CTkFrame(window)
+
 #Input, select the directory that contains the files you wish to process
-input_select_button = ctk.CTkButton(window, text="Input", command=select_input, width=BUTTON_WIDTH)
+input_select_button = ctk.CTkButton(content_frame, text="Input", command=select_input, width=BUTTON_WIDTH)
 ToolTip(input_select_button, msg="Select a directory containing files to process")
-input_entry = ctk.CTkEntry(window, textvariable=input_var, width=400, state="readonly")
+input_entry = ctk.CTkEntry(content_frame, textvariable=input_var, width=400, state="readonly")
 
 #Output, select a directory for your processed files to be placed in
-output_select_button = ctk.CTkButton(window, text="Output", command=select_output, width=BUTTON_WIDTH)
+output_select_button = ctk.CTkButton(content_frame, text="Output", command=select_output, width=BUTTON_WIDTH)
 ToolTip(output_select_button, msg="Select a directory to export the processed files into")
-output_entry = ctk.CTkEntry(window, textvariable=output_var, width=400, state="readonly")
+output_entry = ctk.CTkEntry(content_frame, textvariable=output_var, width=400, state="readonly")
 
 #Filetype, select a file to use its file extension
-file_type_button = ctk.CTkButton(window, text="Filetype", command=select_file_type, width=BUTTON_WIDTH)
+file_type_button = ctk.CTkButton(content_frame, text="Filetype", command=select_file_type, width=BUTTON_WIDTH)
 ToolTip(file_type_button, msg="Select a file of the type you wish to process")
-file_type_entry = ctk.CTkEntry(window, textvariable=file_type_var, width=60, state="readonly", )
+file_type_entry = ctk.CTkEntry(content_frame, textvariable=file_type_var, width=60, state="readonly", )
 
 #Run button
-run_button = ctk.CTkButton(window, text="Run", command=run_script, width= BUTTON_WIDTH)
+run_button = ctk.CTkButton(content_frame, text="Run", command=run_script, width= BUTTON_WIDTH)
 
-#Grid
+#Window Grid
+header_title.grid(row=0, column=0, pady=(10, 30))
+content_frame.grid(row=1, column=0)
+
+#Content Frame Grid
 input_select_button.grid(row=0, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 input_entry.grid(row=0, column=1, sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 output_select_button.grid(row=1, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
