@@ -110,9 +110,9 @@ run_button = ctk.CTkButton(window, text="Run", command=run_script, width= BUTTON
 
 #Grid
 input_select_button.grid(row=0, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
-input_entry.grid(row=0, column=1, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+input_entry.grid(row=0, column=1, sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 output_select_button.grid(row=1, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
-output_entry.grid(row=1, column=1, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+output_entry.grid(row=1, column=1, sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 file_type_button.grid(row=2, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 file_type_entry.grid(row=2, column=1, sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 run_button.grid(row=3, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
