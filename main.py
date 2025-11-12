@@ -144,9 +144,13 @@ file_type_entry = ctk.CTkEntry(content_frame, textvariable=file_type_var, width=
 #Run Button
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
 
+#Configuring Grid
+window.grid_columnconfigure(0, weight=1)
+window.grid_rowconfigure(0, weight=1)
+
 #Window Grid
-header_title.grid(row=0, column=0, pady=(10, 30))
-content_frame.grid(row=1, column=0)
+header_title.grid(row=0, column=0, sticky="EW", pady=(10, 30))
+content_frame.grid(row=1, column=0, sticky="EW")
 
 #Content Frame Grid
 input_select_button.grid(row=0, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
