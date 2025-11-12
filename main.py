@@ -81,7 +81,7 @@ def validate_input():
         return False
     return True
 
-def run_script():
+def script():
     try:
         for index, filename in enumerate(os.listdir(input_var.get())):
             _, file_extension = os.path.splitext(filename)
@@ -89,6 +89,10 @@ def run_script():
                 remove_dead_air(os.path.join(input_var.get(), filename), os.path.join(output_var.get(), filename))
     except OSError as e:
         print(f"OS Error")
+
+def run():
+    if validate_input():
+        script()
 
 #UI constants
 WINDOW_PADDING = 12
@@ -128,7 +132,7 @@ ToolTip(file_type_button, msg="Select a file of the type you wish to process")
 file_type_entry = ctk.CTkEntry(content_frame, textvariable=file_type_var, width=60, state="readonly", )
 
 #Run button
-run_button = ctk.CTkButton(content_frame, text="Run", command=run_script, width= BUTTON_WIDTH)
+run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
 
 #Window Grid
 header_title.grid(row=0, column=0, pady=(10, 30))
