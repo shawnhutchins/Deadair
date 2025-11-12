@@ -5,7 +5,6 @@ import ffmpeg
 import os
 
 #add header Label
-#don't run the script if any of the entries are empty
 #check for mixed forward and backslashes in path
 #add indication of success or failure
 #add indication of progress
@@ -64,6 +63,23 @@ def select_file_type():
     selected_file = select_file()
     _, file_extension = os.path.splitext(selected_file)
     file_type_var.set(file_extension)
+
+def validate_input():
+    #check if any entries are empty
+    if input_var.get() == "":
+        print("Missing Input directory")
+        return False
+    if output_var.get() == "":
+        print("Missing Output directory")
+        return False
+    if file_type_var.get() == "":
+        print("Missing Filetype extension")
+        return False
+    # check if input and output are the same
+    if input_var.get() == output_var.get():
+        print("Input and Output should not be the same directory")
+        return False
+    return True
 
 def run_script():
     try:
