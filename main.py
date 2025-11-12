@@ -8,7 +8,10 @@ import os
 #check for mixed forward and backslashes in path
 #add indication of success or failure
 #add indication of progress
+#make inputs for silence_threshold and min_silence_duration
+#add something small to the output filename, first character for sorting
 
+#Tries to run a ffmpeg filter silence remove on an input file
 def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_duration=0.5):
     """
     Removes dead air from a file using ffmpeg-python.
@@ -38,7 +41,7 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
     except ffmpeg.Error as e:
         print(f"Error removing dead air: {e.stderr.decode()}")
 
-#Opens the folder select dialog and sets the input_label to the path value
+#Opens the folder select dialog and returns the file name
 def select_folder():
     folder_name = filedialog.askdirectory(
         parent=window,
@@ -46,6 +49,7 @@ def select_folder():
     )
     return folder_name
 
+#Opens the file select dialog and returns the file name
 def select_file():
     file_name = filedialog.askopenfilename(
         parent=window,
@@ -53,17 +57,21 @@ def select_file():
     )
     return file_name
 
+#Sets input_var to selected folder
 def select_input():
     input_var.set(select_folder())
 
+#Sets output_var to selected folder
 def select_output():
     output_var.set(select_folder())
 
+#Gets the selected file, splits the file extension and stores it in file_type_var
 def select_file_type():
     selected_file = select_file()
     _, file_extension = os.path.splitext(selected_file)
     file_type_var.set(file_extension)
 
+#Precheckes before running
 def validate_input():
     #check if any entries are empty
     if input_var.get() == "":
@@ -81,6 +89,7 @@ def validate_input():
         return False
     return True
 
+#Runs remove_dead_air() on every file in Input directory, of the selected file type
 def script():
     try:
         for index, filename in enumerate(os.listdir(input_var.get())):
@@ -90,22 +99,23 @@ def script():
     except OSError as e:
         print(f"OS Error")
 
+#Checks if the inputs are valid and if True, runs the script
 def run():
     if validate_input():
         script()
 
-#UI constants
+#UI Constants
 WINDOW_PADDING = 12
 WIDGET_PADDING = 2
 BUTTON_WIDTH = 60
 
-#Main window
+#Main Window
 window = ctk.CTk()
 window.title("Dead Air Remove")
 window.minsize(490, 154)
 window.config(padx=WINDOW_PADDING, pady=WINDOW_PADDING)
 
-#Entry variables
+#Entry Variables
 input_var = ctk.StringVar()
 output_var = ctk.StringVar()
 file_type_var = ctk.StringVar()
@@ -113,7 +123,7 @@ file_type_var = ctk.StringVar()
 #Header
 header_title = ctk.CTkLabel(window, font=("Arial", 32, "bold"), text="DEAD AIR\nREMOVE")
 
-#main content
+#Main Content
 content_frame = ctk.CTkFrame(window)
 
 #Input, select the directory that contains the files you wish to process
@@ -131,7 +141,7 @@ file_type_button = ctk.CTkButton(content_frame, text="Filetype", command=select_
 ToolTip(file_type_button, msg="Select a file of the type you wish to process")
 file_type_entry = ctk.CTkEntry(content_frame, textvariable=file_type_var, width=60, state="readonly", )
 
-#Run button
+#Run Button
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
 
 #Window Grid
