@@ -141,6 +141,9 @@ file_type_button = ctk.CTkButton(content_frame, text="Filetype", command=select_
 ToolTip(file_type_button, msg="Select a file of the type you wish to process")
 file_type_entry = ctk.CTkEntry(content_frame, textvariable=file_type_var, width=60, state="readonly", )
 
+db_threshold_button = ctk.CTkButton(content_frame, text="dB", width=BUTTON_WIDTH)
+db_threshold_slider = ctk.CTkSlider(content_frame, from_=-30, to=50, width=400)
+
 #Run Button
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
 
@@ -159,6 +162,8 @@ output_select_button.grid(row=1, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADD
 output_entry.grid(row=1, column=1, sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 file_type_button.grid(row=2, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 file_type_entry.grid(row=2, column=1, sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
-run_button.grid(row=3, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+db_threshold_button.grid(row=3, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+db_threshold_slider.grid(row=3, column=1,sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+run_button.grid(row=4, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 
 window.mainloop()
