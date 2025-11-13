@@ -119,6 +119,8 @@ window.config(padx=WINDOW_PADDING, pady=WINDOW_PADDING)
 input_var = ctk.StringVar()
 output_var = ctk.StringVar()
 file_type_var = ctk.StringVar()
+db_var = ctk.IntVar()
+db_var.set(-30)
 
 #Header
 header_title = ctk.CTkLabel(window, font=("Arial", 32, "bold"), text="DEAD AIR\nREMOVE")
@@ -142,7 +144,7 @@ ToolTip(file_type_button, msg="Select a file of the type you wish to process")
 file_type_entry = ctk.CTkEntry(content_frame, textvariable=file_type_var, width=60, state="readonly", )
 
 db_threshold_button = ctk.CTkButton(content_frame, text="dB", width=BUTTON_WIDTH)
-db_threshold_slider = ctk.CTkSlider(content_frame, from_=-30, to=50, width=400)
+db_threshold_slider = ctk.CTkSlider(content_frame, from_=-30, to=50, width=400, variable=db_var)
 
 #Run Button
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
