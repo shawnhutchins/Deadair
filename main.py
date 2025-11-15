@@ -155,6 +155,7 @@ db_threshold_slider = ctk.CTkSlider(content_frame, from_=-30, to=50, width=370, 
 min_silence_button = ctk.CTkButton(content_frame, text="Silence", width=BUTTON_WIDTH, state="disabled")
 ToolTip(min_silence_button, msg="The minimum duration of silence (in seconds) to be removed. Default is 0.5 seconds.")
 min_silence_label = ctk.CTkLabel(content_frame, textvariable=silence_var)
+min_silence_slider = ctk.CTkSlider(content_frame, from_=0.1, to=15, width=370, variable=silence_var)
 
 #Run Button
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
@@ -183,6 +184,7 @@ db_threshold_slider.grid(row=3, column=1,sticky="E", padx=WIDGET_PADDING, pady=W
 
 min_silence_button.grid(row=4, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 min_silence_label.grid(row=4, column=1, sticky="W", padx=WIDGET_PADDING + 6, pady=WIDGET_PADDING)
+min_silence_slider.grid(row=4, column=1, sticky="E", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 
 run_button.grid(row=5, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 
