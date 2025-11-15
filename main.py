@@ -148,6 +148,8 @@ ToolTip(db_threshold_button, msg="The volume level in dB below which audio is co
 db_threshold_label = ctk.CTkLabel(content_frame, textvariable=db_var)
 db_threshold_slider = ctk.CTkSlider(content_frame, from_=-30, to=50, width=370, variable=db_var)
 
+min_silence_button = ctk.CTkButton(content_frame, text="Silence", width=BUTTON_WIDTH, state="disabled")
+
 #Run Button
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
 
@@ -162,13 +164,19 @@ content_frame.grid(row=1, column=0, sticky="EW")
 #Content Frame Grid
 input_select_button.grid(row=0, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 input_entry.grid(row=0, column=1, sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+
 output_select_button.grid(row=1, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 output_entry.grid(row=1, column=1, sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+
 file_type_button.grid(row=2, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 file_type_entry.grid(row=2, column=1, sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
-db_threshold_label.grid(row=3, column=1, sticky="W", padx=WIDGET_PADDING + 6, pady=WIDGET_PADDING)
+
 db_threshold_button.grid(row=3, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+db_threshold_label.grid(row=3, column=1, sticky="W", padx=WIDGET_PADDING + 6, pady=WIDGET_PADDING)
 db_threshold_slider.grid(row=3, column=1,sticky="E", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
-run_button.grid(row=4, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+
+min_silence_button.grid(row=4, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+
+run_button.grid(row=5, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 
 window.mainloop()
