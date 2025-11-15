@@ -4,11 +4,9 @@ import customtkinter as ctk
 import ffmpeg
 import os
 
-#add header Label
 #check for mixed forward and backslashes in path
 #add indication of success or failure
 #add indication of progress
-#make inputs for silence_threshold and min_silence_duration
 #add something small to the output filename, first character for sorting
 
 #Tries to run a ffmpeg filter silence remove on an input file
@@ -71,6 +69,12 @@ def select_file_type():
     _, file_extension = os.path.splitext(selected_file)
     file_type_var.set(file_extension)
 
+def default_db_threshold():
+    db_var.set(-30)
+
+def default_min_silence():
+    silence_var.set(0.5)
+
 #Precheckes before running
 def validate_input():
     #check if any entries are empty
@@ -119,10 +123,8 @@ window.config(padx=WINDOW_PADDING, pady=WINDOW_PADDING)
 input_var = ctk.StringVar()
 output_var = ctk.StringVar()
 file_type_var = ctk.StringVar()
-db_var = ctk.IntVar()
-db_var.set(-30)
-silence_var = ctk.DoubleVar()
-silence_var.set(0.5)
+db_var = ctk.IntVar(value=-30)
+silence_var = ctk.DoubleVar(value=0.5)
 
 #Header
 header_title = ctk.CTkLabel(window, font=("Arial", 32, "bold"), text="DEAD AIR\nREMOVE")
@@ -146,16 +148,16 @@ ToolTip(file_type_button, msg="Select a file of the type you wish to process")
 file_type_entry = ctk.CTkEntry(content_frame, textvariable=file_type_var, width=60, state="readonly", )
 
 #dB Threshold slider
-db_threshold_button = ctk.CTkButton(content_frame, text="dB", width=BUTTON_WIDTH, state="disabled")
+db_threshold_button = ctk.CTkButton(content_frame, text="dB", command=default_db_threshold, width=BUTTON_WIDTH)
 ToolTip(db_threshold_button, msg="The volume level in dB below which audio is considered silence. Default is -30 dB")
 db_threshold_label = ctk.CTkLabel(content_frame, textvariable=db_var)
 db_threshold_slider = ctk.CTkSlider(content_frame, from_=-30, to=50, width=370, variable=db_var)
 
 #Minimum Silence Duration slider
-min_silence_button = ctk.CTkButton(content_frame, text="Silence", width=BUTTON_WIDTH, state="disabled")
+min_silence_button = ctk.CTkButton(content_frame, text="Silence", command=default_min_silence, width=BUTTON_WIDTH)
 ToolTip(min_silence_button, msg="The minimum duration of silence (in seconds) to be removed. Default is 0.5 seconds.")
 min_silence_label = ctk.CTkLabel(content_frame, textvariable=silence_var)
-min_silence_slider = ctk.CTkSlider(content_frame, from_=0.1, to=15, width=370, variable=silence_var)
+min_silence_slider = ctk.CTkSlider(content_frame, from_=0, to=10, width=370, variable=silence_var)
 
 #Run Button
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
