@@ -145,11 +145,13 @@ file_type_button = ctk.CTkButton(content_frame, text="Filetype", command=select_
 ToolTip(file_type_button, msg="Select a file of the type you wish to process")
 file_type_entry = ctk.CTkEntry(content_frame, textvariable=file_type_var, width=60, state="readonly", )
 
+#dB Threshold slider
 db_threshold_button = ctk.CTkButton(content_frame, text="dB", width=BUTTON_WIDTH, state="disabled")
 ToolTip(db_threshold_button, msg="The volume level in dB below which audio is considered silence. Default is -30 dB")
 db_threshold_label = ctk.CTkLabel(content_frame, textvariable=db_var)
 db_threshold_slider = ctk.CTkSlider(content_frame, from_=-30, to=50, width=370, variable=db_var)
 
+#Minimum Silence Duration slider
 min_silence_button = ctk.CTkButton(content_frame, text="Silence", width=BUTTON_WIDTH, state="disabled")
 ToolTip(min_silence_button, msg="The minimum duration of silence (in seconds) to be removed. Default is 0.5 seconds.")
 
