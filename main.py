@@ -121,6 +121,8 @@ output_var = ctk.StringVar()
 file_type_var = ctk.StringVar()
 db_var = ctk.IntVar()
 db_var.set(-30)
+silence_var = ctk.DoubleVar()
+silence_var.set(0.5)
 
 #Header
 header_title = ctk.CTkLabel(window, font=("Arial", 32, "bold"), text="DEAD AIR\nREMOVE")
@@ -149,6 +151,7 @@ db_threshold_label = ctk.CTkLabel(content_frame, textvariable=db_var)
 db_threshold_slider = ctk.CTkSlider(content_frame, from_=-30, to=50, width=370, variable=db_var)
 
 min_silence_button = ctk.CTkButton(content_frame, text="Silence", width=BUTTON_WIDTH, state="disabled")
+ToolTip(min_silence_button, msg="The minimum duration of silence (in seconds) to be removed. Default is 0.5 seconds.")
 
 #Run Button
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
