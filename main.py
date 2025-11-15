@@ -99,7 +99,12 @@ def script():
         for index, filename in enumerate(os.listdir(input_var.get())):
             _, file_extension = os.path.splitext(filename)
             if file_extension == file_type_var.get():
-                remove_dead_air(os.path.join(input_var.get(), filename), os.path.join(output_var.get(), filename), db_var.get())
+                remove_dead_air(
+                    os.path.join(input_var.get(), filename),
+                    os.path.join(output_var.get(), filename),
+                    db_var.get(),
+                    silence_var.get()
+                )
     except OSError as e:
         print(f"OS Error")
 
