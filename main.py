@@ -95,7 +95,7 @@ def script():
         for index, filename in enumerate(os.listdir(input_var.get())):
             _, file_extension = os.path.splitext(filename)
             if file_extension == file_type_var.get():
-                remove_dead_air(os.path.join(input_var.get(), filename), os.path.join(output_var.get(), filename))
+                remove_dead_air(os.path.join(input_var.get(), filename), os.path.join(output_var.get(), filename), db_var.get())
     except OSError as e:
         print(f"OS Error")
 
@@ -145,7 +145,7 @@ file_type_entry = ctk.CTkEntry(content_frame, textvariable=file_type_var, width=
 
 db_threshold_label = ctk.CTkLabel(content_frame, textvariable=db_var)
 db_threshold_button = ctk.CTkButton(content_frame, text="dB", width=BUTTON_WIDTH)
-db_threshold_slider = ctk.CTkSlider(content_frame, from_=-30, to=50, width=380, variable=db_var)
+db_threshold_slider = ctk.CTkSlider(content_frame, from_=-30, to=50, width=370, variable=db_var)
 
 #Run Button
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
@@ -165,9 +165,9 @@ output_select_button.grid(row=1, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADD
 output_entry.grid(row=1, column=1, sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 file_type_button.grid(row=2, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 file_type_entry.grid(row=2, column=1, sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
-db_threshold_label.grid(row=3, column=1, sticky="E", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+db_threshold_label.grid(row=3, column=1, sticky="W", padx=WIDGET_PADDING + 6, pady=WIDGET_PADDING)
 db_threshold_button.grid(row=3, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
-db_threshold_slider.grid(row=3, column=1,sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+db_threshold_slider.grid(row=3, column=1,sticky="E", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 run_button.grid(row=4, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 
 window.mainloop()
