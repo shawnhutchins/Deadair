@@ -167,7 +167,7 @@ min_silence_slider = ctk.CTkSlider(content_frame, from_=0, to=10, width=370, var
 #Run Button
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
 ToolTip(run_button, msg="Removes all dead air from each file in the input folder of the "
-                        "chosen filetype and saves the file in the output folder")
+                        "chosen filetype and saves the file in the output folder.")
 
 #Configuring Grid
 window.grid_columnconfigure(0, weight=1)
