@@ -121,7 +121,7 @@ BUTTON_WIDTH = 60
 #Main Window
 window = ctk.CTk()
 window.title("Dead Air Remove")
-window.minsize(490, 154)
+window.minsize(490, 216)
 window.config(padx=WINDOW_PADDING, pady=WINDOW_PADDING)
 
 #Entry Variables
