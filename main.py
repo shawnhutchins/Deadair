@@ -168,6 +168,7 @@ min_silence_slider = ctk.CTkSlider(content_frame, from_=0, to=10, width=370, var
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
 ToolTip(run_button, msg="Removes all dead air from each file in the input folder of the "
                         "chosen filetype and saves the file in the output folder.")
+progress_bar = ctk.CTkProgressBar(content_frame, orientation="horizontal", width=380, height=20, progress_color="#729A65")
 
 #Configuring Grid
 window.grid_columnconfigure(0, weight=1)
@@ -196,5 +197,6 @@ min_silence_label.grid(row=4, column=1, sticky="W", padx=WIDGET_PADDING + 6, pad
 min_silence_slider.grid(row=4, column=1, sticky="E", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 
 run_button.grid(row=5, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+progress_bar.grid(row=5, column=1, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 
 window.mainloop()
