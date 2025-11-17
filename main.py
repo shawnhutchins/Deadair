@@ -1,5 +1,5 @@
 from tkinter import filedialog
-from tktooltip import ToolTip
+from TkToolTip import ToolTip
 import customtkinter as ctk
 import ffmpeg
 import os
