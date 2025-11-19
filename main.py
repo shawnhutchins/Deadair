@@ -151,7 +151,7 @@ output_entry = ctk.CTkEntry(content_frame, textvariable=output_var, width=400, s
 #Filetype, select a file to use its file extension
 file_type_button = ctk.CTkButton(content_frame, text="Filetype", command=select_file_type, width=BUTTON_WIDTH)
 ToolTip(file_type_button, message="Select a file of the type you wish to process")
-file_type_entry = ctk.CTkEntry(content_frame, textvariable=file_type_var, width=60, state="readonly", )
+file_type_entry = ctk.CTkEntry(content_frame, textvariable=file_type_var, width=60, state="readonly")
 
 #dB Threshold slider
 db_threshold_button = ctk.CTkButton(content_frame, text="dB", command=default_db_threshold, width=BUTTON_WIDTH)
