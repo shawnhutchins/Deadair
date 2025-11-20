@@ -131,6 +131,7 @@ output_var = ctk.StringVar()
 file_type_var = ctk.StringVar()
 db_var = ctk.IntVar(value=-30)
 silence_var = ctk.DoubleVar(value=0.5)
+progress_var = ctk.IntVar(value=0)
 
 #Header
 header_title = ctk.CTkLabel(window, font=("Arial", 32, "bold"), text="DEAD AIR\nREMOVE")
@@ -169,7 +170,7 @@ min_silence_slider = ctk.CTkSlider(content_frame, from_=0, to=10, width=370, var
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
 ToolTip(run_button, message="Removes all dead air from each file in the input folder of the "
                         "chosen filetype and saves the file in the output folder.")
-progress_bar = ctk.CTkProgressBar(content_frame, orientation="horizontal", width=380, height=20, progress_color="#729A65")
+progress_bar = ctk.CTkProgressBar(content_frame, orientation="horizontal", width=380, height=20, progress_color="#729A65", variable=progress_var)
 
 #Configuring Grid
 window.grid_columnconfigure(0, weight=1)
