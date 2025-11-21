@@ -11,6 +11,8 @@ import os
 #put tooltips on the sliders to show the value of the slider
 #disable widgets while processing files
 #make function to set the progress bar at script start (set range)
+#make a button to abort the process
+#use after() for the ffmpeg calls to run a separate thread to free up the GUI
 
 #Tries to run a ffmpeg filter silence remove on an input file
 def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_duration=0.5):
@@ -78,6 +80,10 @@ def default_db_threshold():
 def default_min_silence():
     silence_var.set(0.5)
 
+def progress_step(current_value, max_value):
+    normalize_value = (current_value + 1) / max_value
+    progress_bar.set(normalize_value)
+
 #Precheckes before running
 def validate_input():
     #check if any entries are empty
@@ -108,12 +114,15 @@ def script():
                     db_var.get(),
                     silence_var.get()
                 )
+            progress_step(index, len(os.listdir(input_var.get())))
     except OSError as e:
         print(f"OS Error")
 
 #Checks if the inputs are valid and if True, runs the script
 def run():
     if validate_input():
+        progress_bar.set(0)
+        window.update()
         script()
 
 #UI Constants
