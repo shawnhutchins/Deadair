@@ -80,6 +80,10 @@ def default_db_threshold():
 def default_min_silence():
     silence_var.set(0.5)
 
+def progress_reset():
+    progress_bar.set(0)
+    window.update()
+
 def progress_step(current_value, max_value):
     normalize_value = (current_value + 1) / max_value
     progress_bar.set(normalize_value)
@@ -121,8 +125,7 @@ def script():
 #Checks if the inputs are valid and if True, runs the script
 def run():
     if validate_input():
-        progress_bar.set(0)
-        window.update()
+        progress_reset()
         script()
 
 #UI Constants
