@@ -12,7 +12,7 @@ import os
 #disable widgets while processing files
 #make function to set the progress bar at script start (set range)
 #make a button to abort the process
-#use after() for the ffmpeg calls to run a separate thread to free up the GUI
+#use threading for the ffmpeg calls to run a separate thread to free up the GUI
 
 #Tries to run a ffmpeg filter silence remove on an input file
 def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_duration=0.5):
