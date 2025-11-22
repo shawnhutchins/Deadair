@@ -87,6 +87,7 @@ def progress_reset():
 def progress_step(current_value, max_value):
     normalize_value = (current_value + 1) / max_value
     progress_bar.set(normalize_value)
+    window.update()
 
 #Precheckes before running
 def validate_input():
