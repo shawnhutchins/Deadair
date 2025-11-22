@@ -84,7 +84,7 @@ def progress_reset():
     progress_bar.set(0)
     window.update()
 
-def progress_step(current_value, max_value):
+def progress_update(current_value, max_value):
     normalize_value = (current_value + 1) / max_value
     progress_bar.set(normalize_value)
     window.update()
@@ -119,7 +119,7 @@ def script():
                     db_var.get(),
                     silence_var.get()
                 )
-            progress_step(index, len(os.listdir(input_var.get())))
+            progress_update(index, len(os.listdir(input_var.get())))
     except OSError as e:
         print(f"OS Error")
 
