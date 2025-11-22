@@ -1,6 +1,7 @@
-from tkinter import filedialog
 from CTkToolTip import CTkToolTip as ToolTip
+from tkinter import filedialog
 import customtkinter as ctk
+import threading
 import ffmpeg
 import os
 
@@ -12,7 +13,6 @@ import os
 #disable widgets while processing files
 #make function to set the progress bar at script start (set range)
 #make a button to abort the process
-#use threading for the ffmpeg calls to run a separate thread to free up the GUI
 
 #Tries to run a ffmpeg filter silence remove on an input file
 def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_duration=0.5):
@@ -127,7 +127,8 @@ def script():
 def run():
     if validate_input():
         progress_reset()
-        script()
+        script_thread = threading.Thread(target=script)
+        script_thread.start()
 
 #UI Constants
 WINDOW_PADDING = 12
