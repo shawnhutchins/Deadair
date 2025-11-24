@@ -120,6 +120,7 @@ def script():
                     db_var.get(),
                     silence_var.get()
                 )
+            ToolTip(progress_bar, message=f"{index}/{len(os.listdir(input_var.get()))} files in directory")
             progress_update(index, len(os.listdir(input_var.get())))
     except OSError as e:
         print(f"OS Error")
@@ -188,6 +189,7 @@ ToolTip(run_button, message="Removes all dead air from each file in the input fo
                         "chosen filetype and saves the file in the output folder.")
 progress_bar = ctk.CTkProgressBar(content_frame, orientation="horizontal", width=380, height=20, progress_color="#729A65")
 progress_bar.set(0)
+ToolTip(progress_bar, message="0/0 files in directory")
 
 #Configuring Grid
 window.grid_columnconfigure(0, weight=1)
