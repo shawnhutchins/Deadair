@@ -72,16 +72,20 @@ def select_file_type():
     _, file_extension = os.path.splitext(selected_file)
     file_type_var.set(file_extension)
 
+#Button command to set the default dB value
 def default_db_threshold():
     db_var.set(-30)
 
+#Button command to set the default minimum silence duration
 def default_min_silence():
     silence_var.set(0.5)
 
+#Resets the progress bar state to 0 and updates the window
 def progress_reset():
     progress_bar.set(0)
     window.update()
 
+#Updates the value of the progress bar and then updates the window
 def progress_update(current_value, max_value):
     normalize_value = (current_value + 1) / max_value
     progress_bar.set(normalize_value)
@@ -140,7 +144,7 @@ window.title("Dead Air Remove")
 window.minsize(490, 216)
 window.config(padx=WINDOW_PADDING, pady=WINDOW_PADDING)
 
-#Entry Variables
+#Widget Variables
 input_var = ctk.StringVar()
 output_var = ctk.StringVar()
 file_type_var = ctk.StringVar()
@@ -183,7 +187,8 @@ min_silence_slider = ctk.CTkSlider(content_frame, from_=0, to=10, width=370, var
 #Run Button
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
 ToolTip(run_button, message="Removes all dead air from each file in the input folder of the "
-                        "chosen filetype and saves the file in the output folder.")
+                            "chosen filetype and saves the file in the output folder.")
+#Progress Bar
 progress_bar = ctk.CTkProgressBar(content_frame, orientation="horizontal", width=380, height=20, progress_color="#729A65")
 progress_bar.set(0)
 ToolTip(progress_bar, message="0/0 files in directory")
