@@ -10,7 +10,7 @@ import os
 #add something small to the output filename, first character for sorting
 #put tooltips on the sliders to show the value of the slider
 #disable widgets while processing files
-#make a button to abort the process
+#While script running, change the run button to a cancel button to break the for loop
 
 #Tries to run a ffmpeg filter silence remove on an input file
 def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_duration=0.5):
