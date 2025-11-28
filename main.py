@@ -11,6 +11,7 @@ import os
 #make variables for run_button config states
 #style console print commands like make success msg green
 #make a tab window that shows the command line
+#import only required parts of packages
 # -----CONSIDERING-----
 #check for mixed forward and backslashes in path
 #put tooltips on the sliders to show the value of the slider
