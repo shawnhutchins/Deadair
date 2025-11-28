@@ -7,7 +7,6 @@ import os
 
 # -----TASKS-----
 #add indication of success or failure
-#add something small to the output filename, first character for sorting
 #make variables for run_button config states
 #style console print commands like make success msg green
 #make a tab window that shows the command line
@@ -133,7 +132,7 @@ def script():
             if file_extension == file_type_var.get():
                 remove_dead_air(
                     os.path.join(input_var.get(), filename),
-                    os.path.join(output_var.get(), filename),
+                    os.path.join(output_var.get(), FILE_PREFIX + filename),
                     db_var.get(),
                     silence_var.get()
                 )
@@ -156,6 +155,7 @@ def run():
 WINDOW_PADDING = 12
 WIDGET_PADDING = 2
 BUTTON_WIDTH = 60
+FILE_PREFIX = "DAR_"
 
 #Main Window
 window = ctk.CTk()
