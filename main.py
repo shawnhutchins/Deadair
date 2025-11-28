@@ -91,6 +91,13 @@ def progress_update(current_value, max_value):
     progress_bar.set(normalize_value)
     window.update()
 
+#Cancels the script loop and communicates the cancel button has been pressed
+def cancel_script_loop():
+    cancel.set(True)
+    #Change run button to "finishing loop" state
+    run_button.configure(text="⏳", state="disabled", fg_color="red4")
+    print("Script Canceled")
+
 #Precheckes before running
 def validate_input():
     #check if any entries are empty
@@ -111,8 +118,12 @@ def validate_input():
 
 #Runs remove_dead_air() on every file in Input directory, of the selected file type
 def script():
+    #Change run button to Running state
+    run_button.configure(text="Cancel", fg_color="red3", hover_color="red4", command=cancel_script_loop)
     try:
         for index, filename in enumerate(os.listdir(input_var.get())):
+            if cancel.get():
+                break
             _, file_extension = os.path.splitext(filename)
             if file_extension == file_type_var.get():
                 remove_dead_air(
@@ -125,6 +136,9 @@ def script():
             progress_update(index, len(os.listdir(input_var.get())))
     except OSError as e:
         print(f"OS Error")
+    #Change run button back to default state
+    run_button.configure(text="Run", fg_color="SpringGreen4", hover_color="dark green", state="normal", command=run)
+    cancel.set(False)
 
 #Checks if the inputs are valid and if True, runs the script
 def run():
@@ -150,6 +164,7 @@ output_var = ctk.StringVar()
 file_type_var = ctk.StringVar()
 db_var = ctk.IntVar(value=-30)
 silence_var = ctk.DoubleVar(value=0.5)
+cancel = ctk.BooleanVar(value=False)
 
 #Header
 header_title = ctk.CTkLabel(window, font=("Arial", 32, "bold"), text="DEAD AIR\nREMOVE")
@@ -185,7 +200,7 @@ min_silence_label = ctk.CTkLabel(content_frame, textvariable=silence_var)
 min_silence_slider = ctk.CTkSlider(content_frame, from_=0, to=10, width=370, variable=silence_var)
 
 #Run Button
-run_button = ctk.CTkButton(content_frame, text="Run", command=run, width= BUTTON_WIDTH)
+run_button = ctk.CTkButton(content_frame, text="Run", command=run, width=BUTTON_WIDTH, fg_color="SpringGreen4", hover_color="dark green")
 ToolTip(run_button, message="Removes all dead air from each file in the input folder of the "
                             "chosen filetype and saves the file in the output folder.")
 #Progress Bar
