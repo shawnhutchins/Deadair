@@ -5,12 +5,16 @@ import threading
 import ffmpeg
 import os
 
-#check for mixed forward and backslashes in path
+# -----TASKS-----
 #add indication of success or failure
 #add something small to the output filename, first character for sorting
+#make variables for run_button config states
+#style console print commands like make success msg green
+#make a tab window that shows the command line
+# -----CONSIDERING-----
+#check for mixed forward and backslashes in path
 #put tooltips on the sliders to show the value of the slider
 #disable widgets while processing files
-#While script running, change the run button to a cancel button to break the for loop
 
 #Tries to run a ffmpeg filter silence remove on an input file
 def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_duration=0.5):
@@ -208,7 +212,7 @@ progress_bar = ctk.CTkProgressBar(content_frame, orientation="horizontal", width
 progress_bar.set(0)
 ToolTip(progress_bar, message="0/0 files in directory")
 
-#Configuring Grid
+#Configuring Grid -----------------------------------------------------------------------------------------------------
 window.grid_columnconfigure(0, weight=1)
 window.grid_rowconfigure(0, weight=1)
 
