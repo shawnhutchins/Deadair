@@ -136,8 +136,8 @@ def script():
                     db_var.get(),
                     silence_var.get()
                 )
-            ToolTip(progress_bar, message=f"{index}/{len(os.listdir(input_var.get()))} files in directory")
-            progress_update(index, len(os.listdir(input_var.get())))
+            ToolTip(progress_bar, message=f"{index + 1}/{len(os.listdir(input_var.get()))} files in directory")
+            progress_update(index + 1, len(os.listdir(input_var.get())))
     except OSError as e:
         print(f"OS Error")
     #Change run button back to default state
