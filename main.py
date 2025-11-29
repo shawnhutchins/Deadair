@@ -6,12 +6,13 @@ import ffmpeg
 import os
 
 # -----TASKS-----
-#add indication of success or failure
 #make variables for run_button config states
+#change the tooltip on the run button when it changes state
 #style console print commands like make success msg green
 #make a tab window that shows the command line
 #import only required parts of packages
 # -----CONSIDERING-----
+#add indication of success or failure
 #check for mixed forward and backslashes in path
 #put tooltips on the sliders to show the value of the slider
 #disable widgets while processing files
@@ -95,11 +96,23 @@ def progress_update(current_value, max_value):
     progress_bar.set(normalize_value)
     window.update()
 
+#Manages the different states that the run button can have
+def run_button_update_state(state):
+    match state:
+        case "run":
+            run_button.configure(text="Run", fg_color="SpringGreen4", hover_color="dark green", state="normal", command=run)
+        case "running":
+            run_button.configure(text="Cancel", fg_color="red3", hover_color="red4", command=cancel_script_loop)
+        case "canceling":
+            run_button.configure(text="⏳", state="disabled", fg_color="red4")
+        case _:
+            print(f"Unknown state for the run button. state: {state}")
+
 #Cancels the script loop and communicates the cancel button has been pressed
 def cancel_script_loop():
     cancel.set(True)
     #Change run button to "finishing loop" state
-    run_button.configure(text="⏳", state="disabled", fg_color="red4")
+    run_button_update_state("canceling")
     print("Script Canceled")
 
 #Precheckes before running
@@ -122,8 +135,7 @@ def validate_input():
 
 #Runs remove_dead_air() on every file in Input directory, of the selected file type
 def script():
-    #Change run button to Running state
-    run_button.configure(text="Cancel", fg_color="red3", hover_color="red4", command=cancel_script_loop)
+    run_button_update_state("running")
     try:
         for index, filename in enumerate(os.listdir(input_var.get())):
             if cancel.get():
@@ -140,8 +152,7 @@ def script():
             progress_update(index + 1, len(os.listdir(input_var.get())))
     except OSError as e:
         print(f"OS Error")
-    #Change run button back to default state
-    run_button.configure(text="Run", fg_color="SpringGreen4", hover_color="dark green", state="normal", command=run)
+    run_button_update_state("run")
     cancel.set(False)
 
 #Checks if the inputs are valid and if True, runs the script
