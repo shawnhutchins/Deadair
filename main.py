@@ -6,7 +6,6 @@ import ffmpeg
 import os
 
 # -----TASKS-----
-#make variables for run_button config states
 #change the tooltip on the run button when it changes state
 #style console print commands like make success msg green
 #make a tab window that shows the command line
@@ -101,10 +100,14 @@ def run_button_update_state(state):
     match state:
         case "run":
             run_button.configure(text="Run", fg_color="SpringGreen4", hover_color="dark green", state="normal", command=run)
+            run_button_tooltip.configure(message="Removes all dead air from each file in the input folder of the "
+                                                "chosen filetype and saves the file in the output folder.")
         case "running":
             run_button.configure(text="Cancel", fg_color="red3", hover_color="red4", command=cancel_script_loop)
+            run_button_tooltip.configure(message="Cancel the loop and finish the current file.")
         case "canceling":
             run_button.configure(text="⏳", state="disabled", fg_color="red4")
+            run_button_tooltip.configure(message="Finishing last file, please wait.")
         case _:
             print(f"Unknown state for the run button. state: {state}")
 
@@ -217,8 +220,8 @@ min_silence_slider = ctk.CTkSlider(content_frame, from_=0, to=10, width=370, var
 
 #Run Button
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width=BUTTON_WIDTH, fg_color="SpringGreen4", hover_color="dark green")
-ToolTip(run_button, message="Removes all dead air from each file in the input folder of the "
-                            "chosen filetype and saves the file in the output folder.")
+run_button_tooltip = ToolTip(run_button, message="Removes all dead air from each file in the input folder of the "
+                                                "chosen filetype and saves the file in the output folder.")
 #Progress Bar
 progress_bar = ctk.CTkProgressBar(content_frame, orientation="horizontal", width=380, height=20, progress_color="#729A65")
 progress_bar.set(0)
