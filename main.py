@@ -110,7 +110,7 @@ def run_button_update_state(state):
 
 #Cancels the script loop and communicates the cancel button has been pressed
 def cancel_script_loop():
-    cancel.set(True)
+    cancel_loop_var.set(True)
     #Change run button to "finishing loop" state
     run_button_update_state("canceling")
     print("Script Canceled")
@@ -138,7 +138,7 @@ def script():
     run_button_update_state("running")
     try:
         for index, filename in enumerate(os.listdir(input_var.get())):
-            if cancel.get():
+            if cancel_loop_var.get():
                 break
             _, file_extension = os.path.splitext(filename)
             if file_extension == file_type_var.get():
@@ -153,7 +153,7 @@ def script():
     except OSError as e:
         print(f"OS Error")
     run_button_update_state("run")
-    cancel.set(False)
+    cancel_loop_var.set(False)
 
 #Checks if the inputs are valid and if True, runs the script
 def run():
@@ -180,7 +180,7 @@ output_var = ctk.StringVar()
 file_type_var = ctk.StringVar()
 db_var = ctk.IntVar(value=-30)
 silence_var = ctk.DoubleVar(value=0.5)
-cancel = ctk.BooleanVar(value=False)
+cancel_loop_var = ctk.BooleanVar(value=False)
 
 #Header
 header_title = ctk.CTkLabel(window, font=("Arial", 32, "bold"), text="DEAD AIR\nREMOVE")
