@@ -6,7 +6,6 @@ import ffmpeg
 import os
 
 # -----TASKS-----
-#change the tooltip on the run button when it changes state
 #style console print commands like make success msg green
 #make a tab window that shows the command line
 #import only required parts of packages
