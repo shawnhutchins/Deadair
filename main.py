@@ -173,6 +173,9 @@ WIDGET_PADDING = 2
 BUTTON_WIDTH = 60
 FILE_PREFIX = "DAR_"
 
+#Set Default Theme
+ctk.set_default_color_theme("dark-blue")
+
 #Main Window
 window = ctk.CTk()
 window.title("Dead Air Remove")
