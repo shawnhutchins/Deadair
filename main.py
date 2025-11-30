@@ -174,6 +174,7 @@ BUTTON_WIDTH = 60
 FILE_PREFIX = "DAR_"
 
 #Set Default Theme
+ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
 
 #Main Window
