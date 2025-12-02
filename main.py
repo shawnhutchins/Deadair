@@ -175,6 +175,8 @@ WIDGET_PADDING = 2
 BUTTON_WIDTH = 60
 FILE_PREFIX = "DAR_"
 TOOLTIP_DELAY = 0.05
+TOOLTIP_BORDER_WIDTH = 2
+TOOLTIP_BORDER_COLOR = "gray36"
 
 #Set Default Theme
 ctk.set_appearance_mode("dark")
@@ -230,20 +232,20 @@ progress_bar = ctk.CTkProgressBar(content_frame, orientation="horizontal", width
 progress_bar.set(0)
 
 #ToolTips
-ToolTip(input_select_button, delay=TOOLTIP_DELAY,
+ToolTip(input_select_button, delay=TOOLTIP_DELAY, border_color=TOOLTIP_BORDER_COLOR, border_width=TOOLTIP_BORDER_WIDTH,
     message="Select a directory containing files to process")
-ToolTip(output_select_button, delay=TOOLTIP_DELAY,
+ToolTip(output_select_button, delay=TOOLTIP_DELAY, border_color=TOOLTIP_BORDER_COLOR, border_width=TOOLTIP_BORDER_WIDTH,
     message="Select a directory to export the processed files into")
-ToolTip(file_type_button, delay=TOOLTIP_DELAY,
+ToolTip(file_type_button, delay=TOOLTIP_DELAY, border_color=TOOLTIP_BORDER_COLOR, border_width=TOOLTIP_BORDER_WIDTH,
     message="Select a file of the type you wish to process")
-ToolTip(db_threshold_button, delay=TOOLTIP_DELAY,
+ToolTip(db_threshold_button, delay=TOOLTIP_DELAY, border_color=TOOLTIP_BORDER_COLOR, border_width=TOOLTIP_BORDER_WIDTH,
     message="The volume level in dB below which audio is considered silence. Default is -30 dB")
-ToolTip(min_silence_button, delay=TOOLTIP_DELAY,
+ToolTip(min_silence_button, delay=TOOLTIP_DELAY, border_color=TOOLTIP_BORDER_COLOR, border_width=TOOLTIP_BORDER_WIDTH,
     message="The minimum duration of silence (in seconds) to be removed. Default is 0.5 seconds.")
-run_button_tooltip = ToolTip(run_button, delay=TOOLTIP_DELAY,
+run_button_tooltip = ToolTip(run_button, delay=TOOLTIP_DELAY, border_color=TOOLTIP_BORDER_COLOR, border_width=TOOLTIP_BORDER_WIDTH,
     message="Removes all dead air from each file in the input folder of the "
             "chosen filetype and saves the file in the output folder.")
-progress_bar_tooltip = ToolTip(progress_bar, delay=TOOLTIP_DELAY,
+progress_bar_tooltip = ToolTip(progress_bar, delay=TOOLTIP_DELAY, border_color=TOOLTIP_BORDER_COLOR, border_width=TOOLTIP_BORDER_WIDTH,
     message="0/0 files in directory")
 
 #Configuring Grid -----------------------------------------------------------------------------------------------------
