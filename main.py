@@ -6,6 +6,8 @@ import ffmpeg
 import os
 
 # -----TASKS-----
+#add a test button that fills the entries with the testing values for faster testing
+#verify and or create input and output testing directories, no audio file may be ok
 #style console print commands like make success msg green
 #make a tab window that shows the command line
 #add an entry for the file prefix with a default of DAR_
