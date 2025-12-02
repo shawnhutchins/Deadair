@@ -10,7 +10,9 @@ import os
 #make a tab window that shows the command line
 #experiment with tool tip colors to make the text more readable
 #add an entry for the file prefix with a default of DAR_
-#fix resizing of the window 
+#add validation for the file prefix to make sure there are no special/illegal characters
+#add validation for the file type to ensure that ffmpeg can process the file
+#fix resizing of the window
 # -----CONSIDERING-----
 #add indication of success or failure
 #check for mixed forward and backslashes in path
