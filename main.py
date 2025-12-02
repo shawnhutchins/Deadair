@@ -8,7 +8,6 @@ import os
 # -----TASKS-----
 #style console print commands like make success msg green
 #make a tab window that shows the command line
-#experiment with tool tip colors to make the text more readable
 #add an entry for the file prefix with a default of DAR_
 #add validation for the file prefix to make sure there are no special/illegal characters
 #add validation for the file type to ensure that ffmpeg can process the file
