@@ -155,7 +155,7 @@ def script():
                     db_var.get(),
                     silence_var.get()
                 )
-            ToolTip(progress_bar, delay=TOOLTIP_DELAY, message=f"{index + 1}/{len(os.listdir(input_var.get()))} files in directory")
+            progress_bar_tooltip.configure(message=f"{index + 1}/{len(os.listdir(input_var.get()))} files in directory")
             progress_update(index + 1, len(os.listdir(input_var.get())))
     except OSError as e:
         print(f"OS Error")
@@ -202,39 +202,49 @@ content_frame = ctk.CTkFrame(window)
 
 #Input, select the directory that contains the files you wish to process
 input_select_button = ctk.CTkButton(content_frame, text="Input", command=select_input, width=BUTTON_WIDTH)
-ToolTip(input_select_button, delay=TOOLTIP_DELAY, message="Select a directory containing files to process")
 input_entry = ctk.CTkEntry(content_frame, textvariable=input_var, width=400, state="readonly")
 
 #Output, select a directory for your processed files to be placed in
 output_select_button = ctk.CTkButton(content_frame, text="Output", command=select_output, width=BUTTON_WIDTH)
-ToolTip(output_select_button, delay=TOOLTIP_DELAY, message="Select a directory to export the processed files into")
 output_entry = ctk.CTkEntry(content_frame, textvariable=output_var, width=400, state="readonly")
 
 #Filetype, select a file to use its file extension
 file_type_button = ctk.CTkButton(content_frame, text="Filetype", command=select_file_type, width=BUTTON_WIDTH)
-ToolTip(file_type_button, delay=TOOLTIP_DELAY, message="Select a file of the type you wish to process")
 file_type_entry = ctk.CTkEntry(content_frame, textvariable=file_type_var, width=60, state="readonly")
 
 #dB Threshold slider
 db_threshold_button = ctk.CTkButton(content_frame, text="dB", command=default_db_threshold, width=BUTTON_WIDTH)
-ToolTip(db_threshold_button, delay=TOOLTIP_DELAY, message="The volume level in dB below which audio is considered silence. Default is -30 dB")
 db_threshold_label = ctk.CTkLabel(content_frame, textvariable=db_var)
 db_threshold_slider = ctk.CTkSlider(content_frame, from_=-30, to=50, width=370, variable=db_var)
 
 #Minimum Silence Duration slider
 min_silence_button = ctk.CTkButton(content_frame, text="Silence", command=default_min_silence, width=BUTTON_WIDTH)
-ToolTip(min_silence_button, delay=TOOLTIP_DELAY, message="The minimum duration of silence (in seconds) to be removed. Default is 0.5 seconds.")
 min_silence_label = ctk.CTkLabel(content_frame, textvariable=silence_var)
 min_silence_slider = ctk.CTkSlider(content_frame, from_=0, to=10, width=370, variable=silence_var)
 
 #Run Button
 run_button = ctk.CTkButton(content_frame, text="Run", command=run, width=BUTTON_WIDTH, fg_color="SpringGreen4", hover_color="dark green")
-run_button_tooltip = ToolTip(run_button, delay=TOOLTIP_DELAY, message="Removes all dead air from each file in the input folder of the "
-                                                "chosen filetype and saves the file in the output folder.")
+
 #Progress Bar
 progress_bar = ctk.CTkProgressBar(content_frame, orientation="horizontal", width=380, height=20, progress_color="#729A65")
 progress_bar.set(0)
-ToolTip(progress_bar, delay=TOOLTIP_DELAY, message="0/0 files in directory")
+
+#ToolTips
+ToolTip(input_select_button, delay=TOOLTIP_DELAY,
+    message="Select a directory containing files to process")
+ToolTip(output_select_button, delay=TOOLTIP_DELAY,
+    message="Select a directory to export the processed files into")
+ToolTip(file_type_button, delay=TOOLTIP_DELAY,
+    message="Select a file of the type you wish to process")
+ToolTip(db_threshold_button, delay=TOOLTIP_DELAY,
+    message="The volume level in dB below which audio is considered silence. Default is -30 dB")
+ToolTip(min_silence_button, delay=TOOLTIP_DELAY,
+    message="The minimum duration of silence (in seconds) to be removed. Default is 0.5 seconds.")
+run_button_tooltip = ToolTip(run_button, delay=TOOLTIP_DELAY,
+    message="Removes all dead air from each file in the input folder of the "
+            "chosen filetype and saves the file in the output folder.")
+progress_bar_tooltip = ToolTip(progress_bar, delay=TOOLTIP_DELAY,
+    message="0/0 files in directory")
 
 #Configuring Grid -----------------------------------------------------------------------------------------------------
 window.grid_columnconfigure(0, weight=1)
