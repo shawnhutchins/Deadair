@@ -6,7 +6,6 @@ import ffmpeg
 import os
 
 # -----TASKS-----
-#add a test button that fills the entries with the testing values for faster testing
 #verify and or create input and output testing directories, no audio file may be ok
 #style console print commands like make success msg green
 #make a tab window that shows the command line
@@ -19,6 +18,7 @@ import os
 #check for mixed forward and backslashes in path
 #put tooltips on the sliders to show the value of the slider
 #disable widgets while processing files
+#add a test button that fills the entries with the testing values for faster testing
 #import only required parts of packages
 
 #Tries to run a ffmpeg filter silence remove on an input file
