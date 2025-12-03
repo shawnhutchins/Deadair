@@ -170,6 +170,11 @@ def run():
         script_thread = threading.Thread(target=script)
         script_thread.start()
 
+def testing_fill_data():
+    input_var.set("input")
+    output_var.set("output")
+    file_type_var.set(".m4a")
+
 #UI Constants
 WINDOW_PADDING = 12
 WIDGET_PADDING = 2
@@ -178,6 +183,7 @@ FILE_PREFIX = "DAR_"
 TOOLTIP_DELAY = 0.05
 TOOLTIP_BORDER_WIDTH = 2
 TOOLTIP_BORDER_COLOR = "gray36"
+TESTING = False
 
 #Set Default Theme
 ctk.set_appearance_mode("dark")
@@ -277,5 +283,7 @@ min_silence_slider.grid(row=4, column=1, sticky="E", padx=WIDGET_PADDING, pady=W
 
 run_button.grid(row=5, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 progress_bar.grid(row=5, column=1, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
+
+if TESTING: testing_fill_data()
 
 window.mainloop()
