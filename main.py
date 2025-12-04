@@ -170,6 +170,7 @@ def run():
         script_thread = threading.Thread(target=script)
         script_thread.start()
 
+#Sets all entries that do not have a default to speed up manual testing
 def testing_fill_data():
     input_var.set("input")
     output_var.set("output")
