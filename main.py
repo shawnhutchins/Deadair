@@ -6,6 +6,7 @@ import ffmpeg
 import os
 
 # -----TASKS-----
+#add a config file to specify sets of test values as json instead of hardcoded
 #verify and or create input and output testing directories, no audio file may be ok
 #style console print commands like make success msg green
 #make a tab window that shows the command line
