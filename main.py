@@ -197,6 +197,12 @@ window.title("Dead Air Remove")
 window.minsize(490, 216)
 window.config(padx=WINDOW_PADDING, pady=WINDOW_PADDING)
 
+#Tab View
+tabview = ctk.CTkTabview(window)
+tabview.add("App")
+tabview.add("Console")
+tabview.set("App")
+
 #Widget Variables
 input_var = ctk.StringVar()
 output_var = ctk.StringVar()
@@ -206,10 +212,10 @@ silence_var = ctk.DoubleVar(value=0.5)
 cancel_loop_var = ctk.BooleanVar(value=False)
 
 #Header
-header_title = ctk.CTkLabel(window, font=("Arial", 32, "bold"), text="DEAD AIR\nREMOVE")
+header_title = ctk.CTkLabel(tabview.tab("App"), font=("Arial", 32, "bold"), text="DEAD AIR\nREMOVE")
 
 #Main Content
-content_frame = ctk.CTkFrame(window)
+content_frame = ctk.CTkFrame(tabview.tab("App"))
 
 #Input, select the directory that contains the files you wish to process
 input_select_button = ctk.CTkButton(content_frame, text="Input", command=select_input, width=BUTTON_WIDTH)
@@ -260,6 +266,8 @@ progress_bar_tooltip = ToolTip(progress_bar, delay=TOOLTIP_DELAY, border_color=T
 #Configuring Grid -----------------------------------------------------------------------------------------------------
 window.grid_columnconfigure(0, weight=1)
 window.grid_rowconfigure(0, weight=1)
+
+tabview.grid(row=0, column=0)
 
 #Window Grid
 header_title.grid(row=0, column=0, sticky="EW", pady=(10, 30))
