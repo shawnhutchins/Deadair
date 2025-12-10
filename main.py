@@ -266,6 +266,7 @@ progress_bar_tooltip = ToolTip(progress_bar, delay=TOOLTIP_DELAY, border_color=T
 
 #Console tab
 console_text = ScrolledText(tabview.tab("Console"), wrap="word")
+console_text.config(background="gray9", foreground="white", insertbackground="white")
 console_text.pack(fill="both", expand=True)
 
 #Configuring Grid -----------------------------------------------------------------------------------------------------
