@@ -273,7 +273,7 @@ console_text.pack(fill="both", expand=True)
 window.grid_columnconfigure(0, weight=1)
 window.grid_rowconfigure(0, weight=1)
 
-tabview.grid(row=0, column=0)
+tabview.grid(row=0, column=0, sticky="N")
 
 #Window Grid
 header_title.grid(row=0, column=0, sticky="EW", pady=(10, 30))
