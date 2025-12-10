@@ -1,4 +1,5 @@
 from CTkToolTip import CTkToolTip as ToolTip
+from tkinter.scrolledtext import ScrolledText
 from tkinter import filedialog
 import customtkinter as ctk
 import threading
@@ -262,6 +263,10 @@ run_button_tooltip = ToolTip(run_button, delay=TOOLTIP_DELAY, border_color=TOOLT
             "chosen filetype and saves the file in the output folder.")
 progress_bar_tooltip = ToolTip(progress_bar, delay=TOOLTIP_DELAY, border_color=TOOLTIP_BORDER_COLOR, border_width=TOOLTIP_BORDER_WIDTH,
     message="0/0 files in directory")
+
+#Console tab
+console_text = ScrolledText(tabview.tab("Console"), wrap="word")
+console_text.pack(fill="both", expand=True)
 
 #Configuring Grid -----------------------------------------------------------------------------------------------------
 window.grid_columnconfigure(0, weight=1)
