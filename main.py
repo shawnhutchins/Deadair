@@ -3,6 +3,7 @@ from tkinter.scrolledtext import ScrolledText
 from tkinter import filedialog
 import customtkinter as ctk
 import threading
+import queue
 import ffmpeg
 import os
 
@@ -22,6 +23,16 @@ import os
 #disable widgets while processing files
 #add a test button that fills the entries with the testing values for faster testing
 #import only required parts of packages
+
+class StdoutQueue:
+    def __init__(self, q):
+        self.queue = q
+
+    def write(self, s):
+        self.queue.put(s)
+
+    def flush(self):
+        pass
 
 #Tries to run a ffmpeg filter silence remove on an input file
 def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_duration=0.5):
