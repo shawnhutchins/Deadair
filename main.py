@@ -3,8 +3,9 @@ from tkinter.scrolledtext import ScrolledText
 from tkinter import filedialog
 import customtkinter as ctk
 import threading
-import queue
 import ffmpeg
+import queue
+import sys
 import os
 
 # -----TASKS-----
@@ -189,6 +190,13 @@ def testing_fill_data():
     input_var.set("input")
     output_var.set("output")
     file_type_var.set(".m4a")
+
+#Redirecting stdout to thread_queue
+thread_queue = queue.Queue()
+redirector = StdoutQueue(thread_queue)
+original_stdout = sys.stdout
+#sys.stdout = redirector #set stdout to the redirector queue
+#sys.stdout = original_stdout #set stdout back to its original value after thread is finished
 
 #UI Constants
 WINDOW_PADDING = 12
