@@ -24,6 +24,7 @@ import os
 #add a test button that fills the entries with the testing values for faster testing
 #import only required parts of packages
 
+#Used for redirecting the console standard output
 class StdoutQueue:
     def __init__(self, q):
         self.queue = q
