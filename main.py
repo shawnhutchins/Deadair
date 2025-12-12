@@ -1,3 +1,5 @@
+import tkinter #clean this up
+
 from CTkToolTip import CTkToolTip as ToolTip
 from tkinter.scrolledtext import ScrolledText
 from tkinter import filedialog
@@ -35,6 +37,13 @@ class StdoutQueue:
 
     def flush(self):
         pass
+
+def poll_queue():
+    while not thread_queue.empty():
+        msg = thread_queue.get_nowait()
+        console_text.insert(tkinter.END, msg)
+        console_text.see(tkinter.END)
+    window.after(100, poll_queue)
 
 #Tries to run a ffmpeg filter silence remove on an input file
 def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_duration=0.5):
@@ -195,7 +204,8 @@ def testing_fill_data():
 thread_queue = queue.Queue()
 redirector = StdoutQueue(thread_queue)
 original_stdout = sys.stdout
-#sys.stdout = redirector #set stdout to the redirector queue
+sys.stdout = redirector #set stdout to the redirector queue
+sys.stderr = redirector
 #sys.stdout = original_stdout #set stdout back to its original value after thread is finished
 
 #UI Constants
@@ -322,4 +332,6 @@ progress_bar.grid(row=5, column=1, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 
 if TESTING: testing_fill_data()
 
+#checking if the queue has any messages every 100 ms
+window.after(100, poll_queue)
 window.mainloop()
