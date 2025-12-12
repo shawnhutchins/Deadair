@@ -11,6 +11,11 @@ import sys
 import os
 
 # -----TASKS-----
+#handle ffmpeg runtime exception
+#handle exception for having changed the stderr value when used in remove_dead_air()
+#fix run button getting stuck when an invalid filetype is used
+#clean up tkinter imports
+#consider the right time to redirect stdout/stderr and when to set them back to default
 #add a config file to specify sets of test values as json instead of hardcoded
 #verify and or create input and output testing directories, no audio file may be ok
 #style console print commands like make success msg green
