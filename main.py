@@ -78,7 +78,9 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
         )
         print(f"Dead air removed successfully. Output saved to: {output_file}")
     except ffmpeg.Error as e:
-        print(f"Error removing dead air: {e.stderr.decode()}")
+        print(f"Error removing dead air: {input_file} {e}")
+    except Exception as e:
+        print(f"General exception: {e}")
 
 #Opens the folder select dialog and returns the file name
 def select_folder():
