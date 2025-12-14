@@ -43,6 +43,7 @@ class StdoutQueue:
     def flush(self):
         pass
 
+#While the thread_queue is not empty insert the next message from the queue into console_text
 def poll_queue():
     while not thread_queue.empty():
         msg = thread_queue.get_nowait()
