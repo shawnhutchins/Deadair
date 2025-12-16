@@ -79,9 +79,9 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
         )
         print(f"Success, Output saved to: {output_file}")
     except ffmpeg.Error as e:
-        print(f"Error, {input_file}, {e}")
+        print(f"Error: {input_file}, {e}")
     except Exception as e:
-        print(f"General exception, {input_file}, {e}, ")
+        print(f"Unexpected error: {input_file}, {e}, ")
 
 #Opens the folder select dialog and returns the file name
 def select_folder():
@@ -224,7 +224,7 @@ FILE_PREFIX = "DAR_"
 TOOLTIP_DELAY = 0.05
 TOOLTIP_BORDER_WIDTH = 2
 TOOLTIP_BORDER_COLOR = "gray36"
-TESTING = False
+TESTING = True
 
 #Set Default Theme
 ctk.set_appearance_mode("dark")
