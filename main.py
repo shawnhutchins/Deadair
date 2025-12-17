@@ -234,6 +234,7 @@ ctk.set_default_color_theme("dark-blue")
 window = ctk.CTk()
 window.title("Dead Air Remove")
 window.minsize(510, 380)
+window.geometry("510x380")
 window.config(padx=WINDOW_PADDING, pady=WINDOW_PADDING)
 
 #Widget Variables
