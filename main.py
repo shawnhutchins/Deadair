@@ -236,12 +236,6 @@ window.title("Dead Air Remove")
 window.minsize(510, 380)
 window.config(padx=WINDOW_PADDING, pady=WINDOW_PADDING)
 
-#Tab View
-tabview = ctk.CTkTabview(window)
-tabview.add("App")
-tabview.add("Console")
-tabview.set("App")
-
 #Widget Variables
 input_var = ctk.StringVar()
 output_var = ctk.StringVar()
@@ -250,10 +244,18 @@ db_var = ctk.IntVar(value=-30)
 silence_var = ctk.DoubleVar(value=0.5)
 cancel_loop_var = ctk.BooleanVar(value=False)
 
-#Header
-header_title = ctk.CTkLabel(tabview.tab("App"), font=("Arial", 32, "bold"), text="DEAD AIR\nREMOVE")
+#Tab View
+tabview = ctk.CTkTabview(window)
+tabview.add("App")
+tabview.add("Console")
+tabview.set("App")
 
-#Main Content
+#Console Tab
+console_text = ScrolledText(tabview.tab("Console"), wrap="word")
+console_text.config(background="gray9", foreground="white", insertbackground="white")
+
+#App Tab
+header_title = ctk.CTkLabel(tabview.tab("App"), font=("Arial", 32, "bold"), text="DEAD AIR\nREMOVE")
 content_frame = ctk.CTkFrame(tabview.tab("App"))
 
 #Input, select the directory that contains the files you wish to process
@@ -302,22 +304,22 @@ run_button_tooltip = ToolTip(run_button, delay=TOOLTIP_DELAY, border_color=TOOLT
 progress_bar_tooltip = ToolTip(progress_bar, delay=TOOLTIP_DELAY, border_color=TOOLTIP_BORDER_COLOR, border_width=TOOLTIP_BORDER_WIDTH,
     message="0/0 files in directory")
 
-#Console tab
-console_text = ScrolledText(tabview.tab("Console"), wrap="word")
-console_text.config(background="gray9", foreground="white", insertbackground="white")
-console_text.pack(fill="both", expand=True)
-
 #Configuring Grid -----------------------------------------------------------------------------------------------------
+
+#Window Grid
 window.grid_columnconfigure(0, weight=1)
 window.grid_rowconfigure(0, weight=1)
 
-tabview.grid(row=0, column=0, sticky="N")
+#Tab View
+tabview.grid(row=0, column=0, sticky="NS")
 
-#Window Grid
+#Console Tab
+console_text.pack(expand=True, fill=tkinter.BOTH)
+
+#App Tab
 header_title.grid(row=0, column=0, sticky="EW", pady=(10, 30))
 content_frame.grid(row=1, column=0, sticky="EW")
 
-#Content Frame Grid
 input_select_button.grid(row=0, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 input_entry.grid(row=0, column=1, sticky="W", padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 
