@@ -144,7 +144,7 @@ def run_button_update_state(state):
             run_button.configure(text="⏳", state="disabled", fg_color="red4")
             run_button_tooltip.configure(message="Finishing last file, please wait.")
         case _:
-            print(f"Unknown state for the run button. state: {state}")
+            print(f"Unknown state for the run button: {state}")
 
 #Cancels the script loop and communicates the cancel button has been pressed
 def cancel_script_loop():
@@ -189,7 +189,7 @@ def script():
             progress_bar_tooltip.configure(message=f"{index + 1}/{len(os.listdir(input_var.get()))} files in directory")
             progress_update(index + 1, len(os.listdir(input_var.get())))
     except OSError as e:
-        print(f"OS Error")
+        print(f"OS Error: {e}")
     run_button_update_state("run")
     cancel_loop_var.set(False)
 
