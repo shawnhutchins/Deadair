@@ -11,6 +11,8 @@ import sys
 import os
 
 # -----TASKS-----
+#make console scrolled_text start at the min size set
+#make the inputs red if empty after run
 #move to using a logger instead of print statements and show in console tab
 #clean up tkinter imports
 #consider the right time to redirect stdout/stderr and when to set them back to default
