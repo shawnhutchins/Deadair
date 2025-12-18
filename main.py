@@ -1,5 +1,3 @@
-import tkinter #clean this up
-
 from CTkToolTip import CTkToolTip as ToolTip
 from tkinter.scrolledtext import ScrolledText
 from tkinter import filedialog
@@ -12,7 +10,6 @@ import os
 
 # -----TASKS-----
 #add folder checking in the testing function
-#clean up tkinter imports
 #make the inputs red if empty after run
 #style console print commands like make success msg green
 #move to using a logger instead of print statements and show in console tab
@@ -43,8 +40,8 @@ class StdoutQueue:
 def poll_queue():
     while not thread_queue.empty():
         msg = thread_queue.get_nowait()
-        console_text.insert(tkinter.END, msg)
-        console_text.see(tkinter.END)
+        console_text.insert("end", msg)
+        console_text.see("end")
     window.after(100, poll_queue)
 
 #Tries to run a ffmpeg filter silence remove on an input file
@@ -310,7 +307,7 @@ window.grid_rowconfigure(0, weight=1)
 tabview.grid(row=0, column=0, sticky="NS")
 
 #Console Tab
-console_text.pack(expand=True, fill=tkinter.BOTH)
+console_text.pack(expand=True, fill="both")
 
 #App Tab
 header_title.grid(row=0, column=0, sticky="EW", pady=(10, 30))
