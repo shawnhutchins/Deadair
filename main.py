@@ -16,6 +16,7 @@ import os
 #add an entry for the file prefix with a default of DAR_
 #add validation for the file prefix to make sure there are no special/illegal characters
 #add validation for the file type to ensure that ffmpeg can process the file
+#fix piping stderr to the console tab for the ffmpeg command
 # -----CONSIDERING-----
 #add indication of success or failure
 #check for mixed forward and backslashes in path
