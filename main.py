@@ -11,26 +11,22 @@ import sys
 import os
 
 # -----TASKS-----
-#make console scrolled_text start at the min size set
-#make the inputs red if empty after run
-#move to using a logger instead of print statements and show in console tab
+#add folder checking in the testing function
 #clean up tkinter imports
-#consider the right time to redirect stdout/stderr and when to set them back to default
-#add a config file to specify sets of test values as json instead of hardcoded
-#verify and or create input and output testing directories, no audio file may be ok
+#make the inputs red if empty after run
 #style console print commands like make success msg green
-#make a tab window that shows the command line
+#move to using a logger instead of print statements and show in console tab
 #add an entry for the file prefix with a default of DAR_
 #add validation for the file prefix to make sure there are no special/illegal characters
 #add validation for the file type to ensure that ffmpeg can process the file
-#fix resizing of the window
 # -----CONSIDERING-----
 #add indication of success or failure
 #check for mixed forward and backslashes in path
-#put tooltips on the sliders to show the value of the slider
 #disable widgets while processing files
 #add a test button that fills the entries with the testing values for faster testing
 #import only required parts of packages
+#verify and or create input and output testing directories, no audio file may be ok
+#add a config file to specify sets of test values as json instead of hardcoded
 
 #Used for redirecting the console standard output
 class StdoutQueue:
@@ -214,7 +210,6 @@ redirector = StdoutQueue(thread_queue)
 original_stdout = sys.stdout
 sys.stdout = redirector #set stdout to the redirector queue
 sys.stderr = redirector
-#sys.stdout = original_stdout #set stdout back to its original value after thread is finished
 
 #UI Constants
 WINDOW_PADDING = 12
