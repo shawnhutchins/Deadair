@@ -147,8 +147,15 @@ def cancel_script_loop():
     run_button_update_state("canceling")
     print("Script Canceled")
 
+#Resets the entry border color for all entries
+def reset_entry_border_color():
+    input_entry.configure(border_color=ENTRY_BORDER_COLOR)
+    output_entry.configure(border_color=ENTRY_BORDER_COLOR)
+    file_type_entry.configure(border_color=ENTRY_BORDER_COLOR)
+
 #Precheckes before running
 def validate_input():
+    reset_entry_border_color()
     #check if any entries are empty
     if input_var.get() == "":
         input_entry.configure(border_color=ENTRY_ERROR_COLOR)
@@ -225,6 +232,7 @@ TOOLTIP_DELAY = 0.05
 TOOLTIP_BORDER_WIDTH = 2
 TOOLTIP_BORDER_COLOR = "gray36"
 ENTRY_ERROR_COLOR = "brown3"
+ENTRY_BORDER_COLOR = "#565B5E"
 TESTING = True
 
 #Set Default Theme
