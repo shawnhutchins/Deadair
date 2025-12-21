@@ -9,7 +9,6 @@ import sys
 import os
 
 # -----TASKS-----
-#add folder checking in the testing function
 #make the inputs red if empty after run
 #style console print commands like make success msg green
 #move to using a logger instead of print statements and show in console tab
@@ -198,6 +197,10 @@ def run():
 
 #Sets all entries that do not have a default to speed up manual testing
 def testing_fill_data():
+    #creating test directories if they don't exist
+    os.makedirs("input", exist_ok=True)
+    os.makedirs("output", exist_ok=True)
+    #setting entry test values
     input_var.set("input")
     output_var.set("output")
     file_type_var.set(".m4a")
