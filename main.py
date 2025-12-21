@@ -156,26 +156,27 @@ def reset_entry_border_color():
 #Precheckes before running
 def validate_input():
     reset_entry_border_color()
+    validated = True
     #check if any entries are empty
     if input_var.get() == "":
         input_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print("Missing Input directory")
-        return False
+        validated = False
     if output_var.get() == "":
         output_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print("Missing Output directory")
-        return False
+        validated = False
     if file_type_var.get() == "":
         file_type_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print("Missing Filetype extension")
-        return False
+        validated = False
     # check if input and output are the same
     if input_var.get() == output_var.get():
         input_entry.configure(border_color=ENTRY_ERROR_COLOR)
         output_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print("Input and Output should not be the same directory")
-        return False
-    return True
+        validated = False
+    return validated
 
 #Runs remove_dead_air() on every file in Input directory, of the selected file type
 def script():
