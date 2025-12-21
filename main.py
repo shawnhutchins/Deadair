@@ -152,16 +152,21 @@ def cancel_script_loop():
 def validate_input():
     #check if any entries are empty
     if input_var.get() == "":
+        input_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print("Missing Input directory")
         return False
     if output_var.get() == "":
+        output_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print("Missing Output directory")
         return False
     if file_type_var.get() == "":
+        file_type_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print("Missing Filetype extension")
         return False
     # check if input and output are the same
     if input_var.get() == output_var.get():
+        input_entry.configure(border_color=ENTRY_ERROR_COLOR)
+        output_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print("Input and Output should not be the same directory")
         return False
     return True
@@ -201,7 +206,7 @@ def testing_fill_data():
     os.makedirs("input", exist_ok=True)
     os.makedirs("output", exist_ok=True)
     #setting entry test values
-    input_var.set("input")
+    input_var.set("output")
     output_var.set("output")
     file_type_var.set(".m4a")
 
@@ -220,6 +225,7 @@ FILE_PREFIX = "DAR_"
 TOOLTIP_DELAY = 0.05
 TOOLTIP_BORDER_WIDTH = 2
 TOOLTIP_BORDER_COLOR = "gray36"
+ENTRY_ERROR_COLOR = "brown3"
 TESTING = True
 
 #Set Default Theme
