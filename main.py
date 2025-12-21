@@ -9,6 +9,7 @@ import sys
 import os
 
 # -----TASKS-----
+#make progress bar red when there is an error with FFMPEG or another exception
 #style console print commands like make success msg green
 #move to using a logger instead of print statements and show in console tab
 #add an entry for the file prefix with a default of DAR_
