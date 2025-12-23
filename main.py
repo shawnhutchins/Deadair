@@ -9,6 +9,7 @@ import sys
 import os
 
 # -----TASKS-----
+#add msg count in the text of the console tab, color coded for errors etc
 #make progress bar red when there is an error with FFMPEG or another exception
 #style console print commands like make success msg green
 #move to using a logger instead of print statements and show in console tab
