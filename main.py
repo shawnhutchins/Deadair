@@ -210,12 +210,13 @@ def run():
         script_thread.start()
 
 #Sets all entries that do not have a default to speed up manual testing
-def testing_fill_data():
+def testing_fill_data(_):
+    print("Testing")
     #creating test directories if they don't exist
     os.makedirs("input", exist_ok=True)
     os.makedirs("output", exist_ok=True)
     #setting entry test values
-    input_var.set("output")
+    input_var.set("input")
     output_var.set("output")
     file_type_var.set(".m4a")
 
@@ -236,7 +237,6 @@ TOOLTIP_BORDER_WIDTH = 2
 TOOLTIP_BORDER_COLOR = "gray36"
 ENTRY_ERROR_COLOR = "brown3"
 ENTRY_BORDER_COLOR = "#565B5E"
-TESTING = True
 
 #Set Default Theme
 ctk.set_appearance_mode("dark")
@@ -353,7 +353,8 @@ min_silence_slider.grid(row=4, column=1, sticky="E", padx=WIDGET_PADDING, pady=W
 run_button.grid(row=5, column=0, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 progress_bar.grid(row=5, column=1, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 
-if TESTING: testing_fill_data()
+#Binding CTRL + t to fill the entries with the testing values
+window.bind("<Control-t>", testing_fill_data)
 
 #checking if the queue has any messages every 100 ms
 window.after(100, poll_queue)
