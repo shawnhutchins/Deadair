@@ -79,6 +79,11 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
     except Exception as e:
         print(f"Unexpected error: {input_file}, {e}, ")
 
+def update_window_size():
+    current_tab_name = tabview.get()
+    print(current_tab_name)
+    window.geometry("510x380")
+
 #Opens the folder select dialog and returns the file name
 def select_folder():
     folder_name = filedialog.askdirectory(
@@ -247,8 +252,7 @@ ctk.set_default_color_theme("dark-blue")
 #Main Window
 window = ctk.CTk()
 window.title("Dead Air Remove")
-window.minsize(510, 398)
-window.geometry("510x398")
+window.minsize(510, 380)
 window.config(padx=WINDOW_PADDING, pady=WINDOW_PADDING)
 
 #Widget Variables
@@ -260,7 +264,7 @@ silence_var = ctk.DoubleVar(value=0.5)
 cancel_loop_var = ctk.BooleanVar(value=False)
 
 #Tab View
-tabview = ctk.CTkTabview(window)
+tabview = ctk.CTkTabview(window, command=update_window_size)
 tabview.add("App")
 tabview.add("Console")
 tabview.set("App")
