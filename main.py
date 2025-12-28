@@ -199,6 +199,10 @@ def validate_input():
         print("Output directory does not exist")
         validated = False
     #check if a file with the file extension exists in the input folder
+    if not any(file_name.endswith(file_type_var.get()) for file_name in os.listdir(input_var.get())):
+        input_entry.configure(border_color=ENTRY_ERROR_COLOR)
+        print(f"The Input directory does not contain a file of type: {file_type_var.get()}")
+        validated = False
     return validated
 
 #Runs remove_dead_air() on every file in Input directory, of the selected file type
