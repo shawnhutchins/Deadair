@@ -9,7 +9,6 @@ import sys
 import os
 
 # -----TASKS-----
-#when there are no files available to process with the chosen entries, print a msg
 #add tooltip to entries when there is an error with the error description
 #add msg count in the text of the console tab, color coded for errors etc
 #make progress bar red when there is an error with FFMPEG or another exception
