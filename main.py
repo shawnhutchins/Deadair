@@ -87,7 +87,7 @@ def get_window_size():
     return f"{width}x{height}"
 
 def update_window_size():
-    window.geometry("510x380")
+    window.geometry(window_size.get())
 
 #Opens the folder select dialog and returns the file name
 def select_folder():
@@ -267,6 +267,7 @@ file_type_var = ctk.StringVar()
 db_var = ctk.IntVar(value=-30)
 silence_var = ctk.DoubleVar(value=0.5)
 cancel_loop_var = ctk.BooleanVar(value=False)
+window_size = ctk.StringVar()
 
 #Tab View
 tabview = ctk.CTkTabview(window, command=update_window_size)
@@ -367,7 +368,8 @@ progress_bar.grid(row=5, column=1, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 #Binding CTRL + t to fill the entries with the testing values
 window.bind("<Control-t>", testing_fill_data)
 
-print(get_window_size())
+#Getting the window size after all widgets are packed or in grid
+window_size.set(get_window_size())
 
 #checking if the queue has any messages every 100 ms
 window.after(100, poll_queue)
