@@ -182,12 +182,22 @@ def validate_input():
         file_type_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print("Missing Filetype extension")
         validated = False
-    # check if input and output are the same
+    #check if input and output are the same
     if input_var.get() == output_var.get():
         input_entry.configure(border_color=ENTRY_ERROR_COLOR)
         output_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print("Input and Output should not be the same directory")
         validated = False
+    #check if input and output folders exist
+    if not os.path.isdir(input_var.get()):
+        input_entry.configure(border_color=ENTRY_ERROR_COLOR)
+        print("Input directory does not exist")
+        validated = False
+    if not os.path.isdir(output_var.get()):
+        output_entry.configure(border_color=ENTRY_ERROR_COLOR)
+        print("Output directory does not exist")
+        validated = False
+    #check if a file with the file extension exists in the input folder
     return validated
 
 #Runs remove_dead_air() on every file in Input directory, of the selected file type
