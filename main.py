@@ -81,8 +81,6 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
         print(f"Unexpected error: {input_file}, {e}, ")
 
 def update_window_size():
-    current_tab_name = tabview.get()
-    print(current_tab_name)
     window.geometry("510x380")
 
 #Opens the folder select dialog and returns the file name
