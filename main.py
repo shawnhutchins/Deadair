@@ -230,7 +230,7 @@ def testing_fill_data(_):
     #setting entry test values
     input_var.set("input")
     output_var.set("output")
-    file_type_var.set(".m4a")
+    file_type_var.set(TEST_FILE_EXTENSION)
 
 #Redirecting stdout to thread_queue
 thread_queue = queue.Queue()
@@ -239,11 +239,12 @@ original_stdout = sys.stdout
 sys.stdout = redirector #set stdout to the redirector queue
 sys.stderr = redirector
 
-#UI Constants
+#Constants
 WINDOW_PADDING = 12
 WIDGET_PADDING = 2
 BUTTON_WIDTH = 60
 FILE_PREFIX = "DAR_"
+TEST_FILE_EXTENSION = ".m4a"
 TOOLTIP_DELAY = 0.05
 TOOLTIP_BORDER_WIDTH = 2
 TOOLTIP_BORDER_COLOR = "gray36"
