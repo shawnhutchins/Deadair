@@ -9,7 +9,9 @@ import sys
 import os
 
 # -----TASKS-----
+#when testing convert relative path to absolute path to not confuse validation
 #add tooltip to entries when there is an error with the error description
+#removed error tooltips when the error is resolved
 #add msg count in the text of the console tab, color coded for errors etc
 #make progress bar red when there is an error with FFMPEG or another exception
 #style console print commands like make success msg green
@@ -78,12 +80,14 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
     except Exception as e:
         print(f"Unexpected error: {input_file}, {e}, ")
 
+#Gets the window size after updating idle tasks and returns the size as a string
 def get_window_size():
     window.update_idletasks()
     width = window.winfo_reqwidth()
     height = window.winfo_reqheight()
     return f"{width}x{height}"
 
+#Sets the window geometry to the window_size CTK string variable
 def update_window_size():
     window.geometry(window_size.get())
 
