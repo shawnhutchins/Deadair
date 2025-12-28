@@ -203,6 +203,8 @@ def validate_input():
         input_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print(f"The Input directory does not contain a file of type: {file_type_var.get()}")
         validated = False
+    if not validated:
+        print("Failed Validation")
     return validated
 
 #Runs remove_dead_air() on every file in Input directory, of the selected file type
