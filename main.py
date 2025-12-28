@@ -80,6 +80,12 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
     except Exception as e:
         print(f"Unexpected error: {input_file}, {e}, ")
 
+def get_window_size():
+    window.update_idletasks()
+    width = window.winfo_reqwidth()
+    height = window.winfo_reqheight()
+    return f"{width}x{height}"
+
 def update_window_size():
     window.geometry("510x380")
 
@@ -360,6 +366,8 @@ progress_bar.grid(row=5, column=1, padx=WIDGET_PADDING, pady=WIDGET_PADDING)
 
 #Binding CTRL + t to fill the entries with the testing values
 window.bind("<Control-t>", testing_fill_data)
+
+print(get_window_size())
 
 #checking if the queue has any messages every 100 ms
 window.after(100, poll_queue)
