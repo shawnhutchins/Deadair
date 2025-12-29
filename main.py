@@ -9,7 +9,6 @@ import sys
 import os
 
 # -----TASKS-----
-#when testing convert relative path to absolute path to not confuse validation
 #add tooltip to entries when there is an error with the error description
 #removed error tooltips when the error is resolved
 #add msg count in the text of the console tab, color coded for errors etc
