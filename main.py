@@ -245,9 +245,12 @@ def testing_fill_data(_):
     #creating test directories if they don't exist
     os.makedirs("input", exist_ok=True)
     os.makedirs("output", exist_ok=True)
+    #getting the absolute path to the test input and output directories
+    input_abs_path = os.path.abspath("input")
+    output_abs_path = os.path.abspath("output")
     #setting entry test values
-    input_var.set("input")
-    output_var.set("output")
+    input_var.set(input_abs_path)
+    output_var.set(output_abs_path)
     file_type_var.set(TEST_FILE_EXTENSION)
 
 #Redirecting stdout to thread_queue
