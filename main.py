@@ -256,7 +256,8 @@ def testing_fill_data(_):
 thread_queue = queue.Queue()
 redirector = StdoutQueue(thread_queue)
 original_stdout = sys.stdout
-sys.stdout = redirector #set stdout to the redirector queue
+#set stdout to the redirector queue
+sys.stdout = redirector
 sys.stderr = redirector
 
 #Constants
