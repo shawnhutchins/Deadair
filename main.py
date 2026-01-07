@@ -9,8 +9,8 @@ import sys
 import os
 
 # -----TASKS-----
-#convert some messages that are put into the console tab into messagebox alerts
-#when there are no files available to process with the chosen entries, print a msg
+#add tooltip to entries when there is an error with the error description
+#removed error tooltips when the error is resolved
 #add msg count in the text of the console tab, color coded for errors etc
 #make progress bar red when there is an error with FFMPEG or another exception
 #style console print commands like make success msg green
@@ -79,12 +79,14 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
     except Exception as e:
         print(f"Unexpected error: {input_file}, {e}, ")
 
+#Gets the window size after updating idle tasks and returns the size as a string
 def get_window_size():
     window.update_idletasks()
     width = window.winfo_reqwidth()
     height = window.winfo_reqheight()
     return f"{width}x{height}"
 
+#Sets the window geometry to the window_size CTK string variable
 def update_window_size():
     window.geometry(window_size.get())
 
@@ -183,12 +185,28 @@ def validate_input():
         file_type_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print("Missing Filetype extension")
         validated = False
-    # check if input and output are the same
+    #check if input and output are the same
     if input_var.get() == output_var.get():
         input_entry.configure(border_color=ENTRY_ERROR_COLOR)
         output_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print("Input and Output should not be the same directory")
         validated = False
+    #check if input and output folders exist
+    if not os.path.isdir(input_var.get()):
+        input_entry.configure(border_color=ENTRY_ERROR_COLOR)
+        print("Input directory does not exist")
+        validated = False
+    if not os.path.isdir(output_var.get()):
+        output_entry.configure(border_color=ENTRY_ERROR_COLOR)
+        print("Output directory does not exist")
+        validated = False
+    #check if a file with the file extension exists in the input folder
+    if not any(file_name.endswith(file_type_var.get()) for file_name in os.listdir(input_var.get())):
+        input_entry.configure(border_color=ENTRY_ERROR_COLOR)
+        print(f"The Input directory does not contain a file of type: {file_type_var.get()}")
+        validated = False
+    if not validated:
+        print("Failed Validation")
     return validated
 
 #Runs remove_dead_air() on every file in Input directory, of the selected file type
@@ -226,16 +244,20 @@ def testing_fill_data(_):
     #creating test directories if they don't exist
     os.makedirs("input", exist_ok=True)
     os.makedirs("output", exist_ok=True)
+    #getting the absolute path to the test input and output directories
+    input_abs_path = os.path.abspath("input")
+    output_abs_path = os.path.abspath("output")
     #setting entry test values
-    input_var.set("input")
-    output_var.set("output")
+    input_var.set(input_abs_path)
+    output_var.set(output_abs_path)
     file_type_var.set(TEST_FILE_EXTENSION)
 
 #Redirecting stdout to thread_queue
 thread_queue = queue.Queue()
 redirector = StdoutQueue(thread_queue)
 original_stdout = sys.stdout
-sys.stdout = redirector #set stdout to the redirector queue
+#set stdout to the redirector queue
+sys.stdout = redirector
 sys.stderr = redirector
 
 #Constants
