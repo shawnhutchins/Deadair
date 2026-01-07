@@ -9,6 +9,7 @@ import sys
 import os
 
 # -----TASKS-----
+#convert some messages that are put into the console tab into messagebox alerts
 #when there are no files available to process with the chosen entries, print a msg
 #add msg count in the text of the console tab, color coded for errors etc
 #make progress bar red when there is an error with FFMPEG or another exception
