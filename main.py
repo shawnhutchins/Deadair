@@ -1,6 +1,6 @@
 from CTkToolTip import CTkToolTip as ToolTip
 from tkinter.scrolledtext import ScrolledText
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 import customtkinter as ctk
 import threading
 import ffmpeg
@@ -232,6 +232,7 @@ def script():
         print(f"OS Error: {e}")
     run_button_update_state("run")
     cancel_loop_var.set(False)
+    messagebox.showinfo("Finished", "Your files have finished processing.")
 
 #Checks if the inputs are valid and if True, runs the script
 def run():
