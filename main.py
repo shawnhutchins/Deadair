@@ -173,11 +173,12 @@ def reset_entry_border_color():
 #Precheckes before running
 def validate_input():
     reset_entry_border_color()
+    validation_msgs = ""
     validated = True
     #check if any entries are empty
     if input_var.get() == "":
         input_entry.configure(border_color=ENTRY_ERROR_COLOR)
-        print("Missing Input directory")
+        validation_msgs += "Missing Input directory\n"
         validated = False
     if output_var.get() == "":
         output_entry.configure(border_color=ENTRY_ERROR_COLOR)
@@ -202,13 +203,30 @@ def validate_input():
         output_entry.configure(border_color=ENTRY_ERROR_COLOR)
         print("Output directory does not exist")
         validated = False
-    #check if a file with the file extension exists in the input folder
-    if not any(file_name.endswith(file_type_var.get()) for file_name in os.listdir(input_var.get())):
-        input_entry.configure(border_color=ENTRY_ERROR_COLOR)
-        print(f"The Input directory does not contain a file of type: {file_type_var.get()}")
+    #check if the right files exist in the input directory
+    try:
+        #check if the directory contains files
+        if os.listdir(input_var.get()):
+            try:
+                #check if a file with the file extension exists in the input folder
+                if not any(file_name.endswith(file_type_var.get()) for file_name in os.listdir(input_var.get())):
+                    input_entry.configure(border_color=ENTRY_ERROR_COLOR)
+                    print(f"The Input directory does not contain a file of type: {file_type_var.get()}")
+                    validated = False
+            except IOError as e:
+                print(e)
+                validated = False
+        #if the directory is empty
+        else:
+            print("Input directory is empty")
+            validated = False
+    except IOError as e:
+        print(e)
         validated = False
+
     if not validated:
         print("Failed Validation")
+        messagebox.showwarning("Validation Error", validation_msgs)
     return validated
 
 #Runs remove_dead_air() on every file in Input directory, of the selected file type
