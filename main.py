@@ -218,6 +218,7 @@ def validate_input():
                 validated = False
         #if the directory is empty
         else:
+            input_entry.configure(border_color=ENTRY_ERROR_COLOR)
             validation_msgs += "Input directory is empty\n"
             validated = False
     except IOError as e:
