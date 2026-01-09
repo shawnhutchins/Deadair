@@ -212,7 +212,7 @@ def validate_input():
                 #check if a file with the file extension exists in the input folder
                 if not any(file_name.endswith(file_type_var.get()) for file_name in os.listdir(input_var.get())):
                     input_entry.configure(border_color=ENTRY_ERROR_COLOR)
-                    validation_msgs += "The Input directory does not contain a file of type: {file_type_var.get()}\n"
+                    validation_msgs += f"The Input directory does not contain a file of type: {file_type_var.get()}\n"
                     validated = False
             except IOError as e:
                 print(e)
