@@ -9,27 +9,24 @@ import sys
 import os
 
 # -----TASKS-----
+#add indication of success or failure with messageboxes
+#refactor validating correct files exist in the directory
 #default values for db threshold and min silence don't need to be tkinter variables
-#convert some messages sent to the console tab into messagebox alerts
-#when there are no files available to process with the chosen entries, print a msg
-#add tooltip to entries when there is an error with the error description
+#add tooltip to entries when there is an error
 #removed error tooltips when the error is resolved
+#move to using a logger instead of print statements and show in console tab
+#fix piping stderr to the console tab for the ffmpeg command
+#add validation for the file type to ensure that ffmpeg can process the file
+# -----CONSIDERING-----
 #add msg count in the text of the console tab, color coded for errors etc
 #make progress bar red when there is an error with FFMPEG or another exception
-#style console print commands like make success msg green
-#move to using a logger instead of print statements and show in console tab
+#style console print commands, make success msg green
 #add an entry for the file prefix with a default of DAR_
 #add validation for the file prefix to make sure there are no special/illegal characters
-#add validation for the file type to ensure that ffmpeg can process the file
-#fix piping stderr to the console tab for the ffmpeg command
-# -----CONSIDERING-----
-#add indication of success or failure
 #check for mixed forward and backslashes in path
 #disable widgets while processing files
-#add a test button that fills the entries with the testing values for faster testing
 #import only required parts of packages
-#verify and or create input and output testing directories, no audio file may be ok
-#add a config file to specify sets of test values as json instead of hardcoded
+#add a config file to specify sets of test values as json to confirm validation working
 
 #Used for redirecting the console standard output
 class StdoutQueue:
