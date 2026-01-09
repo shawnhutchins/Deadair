@@ -9,6 +9,7 @@ import sys
 import os
 
 # -----TASKS-----
+#default values for db threshold and min silence don't need to be tkinter variables
 #convert some messages sent to the console tab into messagebox alerts
 #when there are no files available to process with the chosen entries, print a msg
 #add tooltip to entries when there is an error with the error description
