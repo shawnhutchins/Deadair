@@ -182,26 +182,26 @@ def validate_input():
         validated = False
     if output_var.get() == "":
         output_entry.configure(border_color=ENTRY_ERROR_COLOR)
-        print("Missing Output directory")
+        validation_msgs += "Missing Output directory\n"
         validated = False
     if file_type_var.get() == "":
         file_type_entry.configure(border_color=ENTRY_ERROR_COLOR)
-        print("Missing Filetype extension")
+        validation_msgs += "Missing Filetype extension\n"
         validated = False
     #check if input and output are the same
     if input_var.get() == output_var.get():
         input_entry.configure(border_color=ENTRY_ERROR_COLOR)
         output_entry.configure(border_color=ENTRY_ERROR_COLOR)
-        print("Input and Output should not be the same directory")
+        validation_msgs += "Input and Output should not be the same directory\n"
         validated = False
     #check if input and output folders exist
     if not os.path.isdir(input_var.get()):
         input_entry.configure(border_color=ENTRY_ERROR_COLOR)
-        print("Input directory does not exist")
+        validation_msgs += "Input directory does not exist\n"
         validated = False
     if not os.path.isdir(output_var.get()):
         output_entry.configure(border_color=ENTRY_ERROR_COLOR)
-        print("Output directory does not exist")
+        validation_msgs += "Output directory does not exist\n"
         validated = False
     #check if the right files exist in the input directory
     try:
@@ -211,14 +211,14 @@ def validate_input():
                 #check if a file with the file extension exists in the input folder
                 if not any(file_name.endswith(file_type_var.get()) for file_name in os.listdir(input_var.get())):
                     input_entry.configure(border_color=ENTRY_ERROR_COLOR)
-                    print(f"The Input directory does not contain a file of type: {file_type_var.get()}")
+                    validation_msgs += "The Input directory does not contain a file of type: {file_type_var.get()}\n"
                     validated = False
             except IOError as e:
                 print(e)
                 validated = False
         #if the directory is empty
         else:
-            print("Input directory is empty")
+            validation_msgs += "Input directory is empty\n"
             validated = False
     except IOError as e:
         print(e)
@@ -226,7 +226,7 @@ def validate_input():
 
     if not validated:
         print("Failed Validation")
-        messagebox.showwarning("Validation Error", validation_msgs)
+        messagebox.showerror("Validation Error", validation_msgs)
     return validated
 
 #Runs remove_dead_air() on every file in Input directory, of the selected file type
