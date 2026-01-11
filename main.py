@@ -11,7 +11,6 @@ import os
 # -----TASKS-----
 #add indication of success or failure with messageboxes
 #refactor validating correct files exist in the directory
-#default values for db threshold and min silence don't need to be tkinter variables
 #add tooltip to entries when there is an error
 #removed error tooltips when the error is resolved
 #move to using a logger instead of print statements and show in console tab
