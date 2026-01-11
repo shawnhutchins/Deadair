@@ -9,7 +9,6 @@ import sys
 import os
 
 # -----TASKS-----
-#add indication of success or failure with messageboxes
 #refactor validating correct files exist in the directory
 #add tooltip to entries when there is an error
 #removed error tooltips when the error is resolved
