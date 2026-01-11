@@ -75,8 +75,10 @@ def remove_dead_air(input_file, output_file, silence_threshold=-30, min_silence_
         print(f"Success, Output saved to: {output_file}")
     except ffmpeg.Error as e:
         print(f"Error: {input_file}, {e}")
+        messagebox.showerror("FFMPEG Error", f"Error: {input_file}, {e}")
     except Exception as e:
-        print(f"Unexpected error: {input_file}, {e}, ")
+        print(f"Unexpected error: {input_file}, {e}")
+        messagebox.showerror("Unexpected Error", f"Unexpected error: {input_file}, {e}")
 
 #Gets the window size after updating idle tasks and returns the size as a string
 def get_window_size():
